@@ -1,0 +1,677 @@
+{ "golfCourses": {
+    "golfCourse": [
+        {
+	    "address": "1600 Aetna Springs Rd",
+        "city": "Pope Valley, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Aetna Springs Golf Course",
+            "id": "5000",
+            "info": "",
+            "latitude": "38.654099",
+            "longitude": "-122.482193",
+	    "phone": "(707) 965-2115",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2352187"
+        },
+        {	
+	    "address": "555 Jameson Canyon Road",
+        "city": "Napa Valley, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Chardonnay Golf Course",
+            "id": "5001",
+            "info": "",
+            "latitude": "38.220058",
+            "longitude": "-122.234307",
+	    "phone": "(707) 257-1900",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2456984",
+	    "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.21723",
+			    "longitude": "-122.240462"
+			    },
+			    {
+			    "latitude": "38.217242",
+			    "longitude": "-122.24059"
+			    },
+			    {
+			    "latitude": "38.217216",
+			    "longitude": "-122.240673"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.217449",
+			    "longitude": "-122.244738"
+			    },
+			    {
+			    "latitude": "38.217477",
+			    "longitude": "-122.244875"
+			    },
+			    {
+			    "latitude": "38.217521",
+			    "longitude": "-122.244964"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.215809",
+			    "longitude": "-122.24501"
+			    },
+			    {
+			    "latitude": "38.215747",
+			    "longitude": "-122.245075"
+			    },
+			    {
+			    "latitude": "38.215673",
+			    "longitude": "-122.2451"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.21604",
+			    "longitude": "-122.239627"
+			    },
+			    {
+			    "latitude": "38.215979",
+			    "longitude": "-122.239529"
+			    },
+			    {
+			    "latitude": "38.215937",
+			    "longitude": "-122.239431"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.214859",
+			    "longitude": "-122.237839"
+			    },
+			    {
+			    "latitude": "38.214955",
+			    "longitude": "-122.237604"
+			    },
+			    {
+			    "latitude": "38.214985",
+			    "longitude": "-122.237441"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.210302",
+			    "longitude": "-122.236668"
+			    },
+			    {
+			    "latitude": "38.210232",
+			    "longitude": "-122.236727"
+			    },
+			    {
+			    "latitude": "38.21016",
+			    "longitude": "-122.236787"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.211215",
+			    "longitude": "-122.243181"
+			    },
+			    {
+			    "latitude": "38.211263",
+			    "longitude": "-122.243383"
+			    },
+			    {
+			    "latitude": "38.211296",
+			    "longitude": "-122.243562"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.212454",
+			    "longitude": "-122.244665"
+			    },
+			    {
+			    "latitude": "38.212515",
+			    "longitude": "-122.244413"
+			    },
+			    {
+			    "latitude": "38.212236",
+			    "longitude": "-122.244044"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.214136",
+			    "longitude": "-122.237962"
+			    },
+			    {
+			    "latitude": "38.21423",
+			    "longitude": "-122.237911"
+			    },
+			    {
+			    "latitude": "38.214322",
+			    "longitude": "-122.237877"
+			    }
+			  ]
+			},
+			{
+			"hole": "10",
+			"placement":
+			  [
+			  	{
+			    "latitude": "38.216856",
+			    "longitude": "-122.23058"
+			    },
+			    {
+			    "latitude": "38.216966",
+			    "longitude": "-122.230568"
+			    },
+			    {
+			    "latitude": "38.217059",
+			    "longitude": "-122.230533"
+			    }
+			  ]
+			},
+			{
+			"hole": "11",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.214296",
+			    "longitude": "-122.230279"
+			    },
+			    {
+			    "latitude": "38.214198",
+			    "longitude": "-122.230253"
+			    },
+			    {
+			    "latitude": "38.21414",
+			    "longitude": "-122.230191"
+			    }
+			  ]
+			},
+			{
+			"hole": "12",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.213046",
+			    "longitude": "-122.232161"
+			    },
+			    {
+			    "latitude": "38.213003",
+			    "longitude": "-122.232286"
+			    },
+			    {
+			    "latitude": "38.212951",
+			    "longitude": "-122.232369"
+			    }
+			  ]
+			},
+			{
+			"hole": "13",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.212437",
+			    "longitude": "-122.228926"
+			    },
+			    {
+			    "latitude": "38.212488",
+			    "longitude": "-122.228773"
+			    },
+			    {
+			    "latitude": "38.212513",
+			    "longitude": "-122.228635"
+			    }
+			  ]
+			},
+			{
+			"hole": "14",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.211669",
+			    "longitude": "-122.230463"
+			    },
+			    {
+			    "latitude": "38.211686",
+			    "longitude": "-122.230554"
+			    },
+			    {
+			    "latitude": "38.211719",
+			    "longitude": "-122.230653"
+			    }
+			  ]
+			},
+			{
+			"hole": "15",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.213456",
+			    "longitude": "-122.234721"
+			    },
+			    {
+			    "latitude": "38.213561",
+			    "longitude": "-122.234799"
+			    },
+			    {
+			    "latitude": "38.213641",
+			    "longitude": "-122.234952"
+			    }
+			  ]
+			},
+			{
+			"hole": "16",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.214321",
+			    "longitude": "-122.234847"
+			    },
+			    {
+			    "latitude": "38.21429",
+			    "longitude": "-122.234721"
+			    },
+			    {
+			    "latitude": "38.214308",
+			    "longitude": "-122.234562"
+			    }
+			  ]
+			},
+			{
+			"hole": "17",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.213553",
+			    "longitude": "-122.23049"
+			    },
+			    {
+			    "latitude": "38.21352",
+			    "longitude": "-122.230367"
+			    },
+			    {
+			    "latitude": "38.213467",
+			    "longitude": "-122.23025"
+			    }
+			  ]
+			},
+			{
+			"hole": "18",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.215179",
+			    "longitude": "-122.235162"
+			    },
+			    {
+			    "latitude": "38.215199",
+			    "longitude": "-122.235326"
+			    },
+			    {
+			    "latitude": "38.215182",
+			    "longitude": "-122.235178"
+			    }
+			  ]
+			}
+		    ]
+        },
+        {
+	    "address": "560 S. Kelly Rd",
+            "city": "American Canyon, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Eagle Vines Golf Course",
+            "id": "5002",
+            "info": "",
+            "latitude": "38.220058",
+            "longitude": "-122.234207",
+	    "phone": "(707) 257-4470",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2354251"
+        },
+        {
+	    "address": "900 Meadowood Lane",
+            "city": "St. Helena, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Meadowood Golf Course",
+            "id": "5003",
+            "info": "",
+            "latitude": "38.522629",
+            "longitude": "-122.466591",
+	    "phone": "(707) 531-4788",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2486809"
+        },
+        {
+	    "address": "2025 Grant Street",
+            "city": "Calistoga, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Mount St. Helena Golf Course",
+            "id": "5004",
+            "info": "",
+            "latitude": "38.522629",
+            "longitude": "-122.584129",
+	    "phone": "(707) 942-9966",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2373317"
+        },
+        {
+	    "address": "2295 Streblow Dr",
+            "city": "Napa, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Napa Golf Course",
+            "id": "5005",
+            "info": "",
+            "latitude": "38.26588",
+            "longitude": "-122.27812",
+	    "phone": "(707) 255-4333",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2456984"
+        },
+        {
+	    "address": "3385 Hagen Road",
+            "city": "Napa, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Napa Valley Golf Club",
+            "id": "5006",
+            "info": "",
+            "latitude": "38.322198",
+            "longitude": "-122.23938",
+	    "phone": "(707) 252-1111",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2456984"
+        },
+        {
+	    "address": "1600 Atlas Peak Road",
+            "city": "Napa, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "36",
+	    "imageURL": "",	
+            "name": "Silverado Resort Golf",
+            "id": "5008",
+            "info": "",
+            "latitude": "38.34812",
+            "longitude": "-122.266357",
+	    "phone": "(707) 257-5640",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2456984"
+        },
+        {
+	    "address": "7901 Solano Avenue",
+            "city": "Yountville, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Vintners Golf Club",
+            "id": "5008",
+            "info": "",
+            "latitude": "38.396717",
+            "longitude": "-122.359535",
+	    "phone": "(707) 944-1992",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2456984",
+	    "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.394831",
+			    "longitude": "-122.362052"
+			    },
+			    {
+			    "latitude": "38.394816",
+			    "longitude": "-122.362151"
+			    },
+			    {
+			    "latitude": "38.394848",
+			    "longitude": "-122.362237"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.39374",
+			    "longitude": "-122.362711"
+			    },
+			    {
+			    "latitude": "38.393673",
+			    "longitude": "-122.362705"
+			    },
+			    {
+			    "latitude": "38.393609",
+			    "longitude": "-122.362695"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.391553",
+			    "longitude": "-122.36054"
+			    },
+			    {
+			    "latitude": "38.391493",
+			    "longitude": "-122.360527"
+			    },
+			    {
+			    "latitude": "38.391432",
+			    "longitude": "-122.360506"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.39241",
+			    "longitude": "-122.359214"
+			    },
+			    {
+			    "latitude": "38.39244",
+			    "longitude": "-122.359103"
+			    },
+			    {
+			    "latitude": "38.392436",
+			    "longitude": "-122.359009"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.393036",
+			    "longitude": "-122.355926"
+			    },
+			    {
+			    "latitude": "38.393111",
+			    "longitude": "-122.355906"
+			    },
+			    {
+			    "latitude": "38.39317",
+			    "longitude": "-122.35587"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.390721",
+			    "longitude": "-122.360204"
+			    },
+			    {
+			    "latitude": "38.39065",
+			    "longitude": "-122.360222"
+			    },
+			    {
+			    "latitude": "38.390586",
+			    "longitude": "-122.360189"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.392872",
+			    "longitude": "-122.362467"
+			    },
+			    {
+			    "latitude": "38.39293",
+			    "longitude": "-122.362479"
+			    },
+			    {
+			    "latitude": "38.393007",
+			    "longitude": "-122.362475"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.394276",
+			    "longitude": "-122.363352"
+			    },
+			    {
+			    "latitude": "38.394349",
+			    "longitude": "-122.363337"
+			    },
+			    {
+			    "latitude": "38.394417",
+			    "longitude": "-122.363273"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.396074",
+			    "longitude": "-122.359496"
+			    },
+			    {
+			    "latitude": "38.396037",
+			    "longitude": "-122.359416"
+			    },
+			    {
+			    "latitude": "38.395988",
+			    "longitude": "-122.359343"
+			    }
+			  ]
+			}
+		  ]
+        },
+        {
+	    "address": "1129 Dealy Lane",
+            "city": "Napa, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Vinyard Knolls Golf Course",
+            "id": "5009",
+            "info": "",
+            "latitude": "38.26157",
+            "longitude": "-122.344299",
+	    "phone": "",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2456984"
+        }
+    ]
+    }
+}

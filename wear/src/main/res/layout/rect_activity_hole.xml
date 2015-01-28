@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HoleActivity"
+    tools:deviceIds="wear_square"
+    android:background="@drawable/greenback_sq">
+
+    <TextView
+        android:id="@+id/hole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/hole"
+        android:textSize="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/back"
+        android:textSize="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/middle"
+        android:textSize="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/front"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/front"
+        android:textSize="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="#ffffffff" />
+</LinearLayout>

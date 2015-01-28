@@ -1,0 +1,1023 @@
+{ "golfCourses": {
+    "golfCourse": [
+    {
+	    "address": "99 Harding Road",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Fleming Golf Course",
+            "id": "3002",
+            "info": "",
+            "latitude": "37.724107",
+            "longitude": "-122.49488",
+	    "phone": "(415) 664-4690",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956",
+	    "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.725715",
+			    "longitude": "-122.487054"
+			    },
+			    {
+			    "latitude": "37.725722",
+			    "longitude": "-122.487004"
+			    },
+			    {
+			    "latitude": "37.72573",
+			    "longitude": "-122.486922"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.725124",
+			    "longitude": "-122.485573"
+			    },
+			    {
+			    "latitude": "37.725088",
+			    "longitude": "-122.48553"
+			    },
+			    {
+			    "latitude": "37.725051",
+			    "longitude": "-122.485491"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.723422",
+			    "longitude": "-122.486498"
+			    },
+			    {
+			    "latitude": "37.723367",
+			    "longitude": "-122.486512"
+			    },
+			    {
+			    "latitude": "37.723322",
+			    "longitude": "-122.486526"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.724426",
+			    "longitude": "-122.48645"
+			    },
+			    {
+			    "latitude": "37.724465",
+			    "longitude": "-122.486422"
+			    },
+			    {
+			    "latitude": "37.72451",
+			    "longitude": "-122.486386"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.723814",
+			    "longitude": "-122.488288"
+			    },
+			    {
+			    "latitude": "37.723773",
+			    "longitude": "-122.488357"
+			    },
+			    {
+			    "latitude": "37.723754",
+			    "longitude": "-122.488432"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.723689",
+			    "longitude": "-122.49037"
+			    },
+			    {
+			    "latitude": "37.723694",
+			    "longitude": "-122.490466"
+			    },
+			    {
+			    "latitude": "37.723707",
+			    "longitude": "-122.490542"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.725174",
+			    "longitude": "-122.486314"
+			    },
+			    {
+			    "latitude": "37.725187",
+			    "longitude": "-122.486257"
+			    },
+			    {
+			    "latitude": "37.725199",
+			    "longitude": "-122.486194"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.724716",
+			    "longitude": "-122.488962"
+			    },
+			    {
+			    "latitude": "37.724712",
+			    "longitude": "-122.489036"
+			    },
+			    {
+			    "latitude": "37.724687",
+			    "longitude": "-122.489087"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.725213",
+			    "longitude": "-122.490556"
+			    },
+			    {
+			    "latitude": "37.725259",
+			    "longitude": "-122.490632"
+			    },
+			    {
+			    "latitude": "37.725287",
+			    "longitude": "-122.490695"
+			    }
+			  ]
+			}
+		    ]
+        },
+        {
+	    "address": "300 34th Avenue",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Lincoln Park Golf Course",
+            "id": "3003",
+            "info": "",
+            "latitude": "37.7842171",
+            "longitude": "-122.494588",
+	    "phone": "(415) 664-4690",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956",
+	    	    "caddy": 
+		  [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.783972",
+			    "longitude": "-122.497275"
+			    },
+			    {
+			    "latitude": "37.784017",
+			    "longitude": "-122.497296"
+			    },
+			    {
+			    "latitude": "37.784067",
+			    "longitude": "-122.497293"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.784971",
+			    "longitude": "-122.498951"
+			    },
+			    {
+			    "latitude": "37.785019",
+			    "longitude": "-122.498958"
+			    },
+			    {
+			    "latitude": "37.785073",
+			    "longitude": "-122.498967"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.786669",
+			    "longitude": "-122.502879"
+			    },
+			    {
+			    "latitude": "37.786633",
+			    "longitude": "-122.502935"
+			    },
+			    {
+			    "latitude": "37.786587",
+			    "longitude": "-122.502984"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.784794",
+			    "longitude": "-122.504225"
+			    },
+			    {
+			    "latitude": "37.784764",
+			    "longitude": "-122.504274"
+			    },
+			    {
+			    "latitude": "37.784728",
+			    "longitude": "-122.504302"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.785919",
+			    "longitude": "-122.501225"
+			    },
+			    {
+			    "latitude": "37.785964",
+			    "longitude": "-122.501252"
+			    },
+			    {
+			    "latitude": "37.78602",
+			    "longitude": "-122.501287"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.782099",
+			    "longitude": "-122.500889"
+			    },
+			    {
+			    "latitude": "37.782046",
+			    "longitude": "-122.500933"
+			    },
+			    {
+			    "latitude": "37.782019",
+			    "longitude": "-122.500973"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.78211",
+			    "longitude": "-122.49765"
+			    },
+			    {
+			    "latitude": "37.782122",
+			    "longitude": "-122.49759"
+			    },
+			    {
+			    "latitude": "37.782133",
+			    "longitude": "-122.497531"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.782094",
+			    "longitude": "-122.495881"
+			    },
+			    {
+			    "latitude": "37.782113",
+			    "longitude": "-122.495844"
+			    },
+			    {
+			    "latitude": "37.782137",
+			    "longitude": "-122.495815"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.78247",
+			    "longitude": "-122.498702"
+			    },
+			    {
+			    "latitude": "37.782495",
+			    "longitude": "-122.49879"
+			    },
+			    {
+			    "latitude": "37.782524",
+			    "longitude": "-122.498873"
+			    }
+			  ]
+			},
+						{ 
+			"hole": "10",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.784207",
+			    "longitude": "-122.50001"
+			    },
+			    {
+			    "latitude": "37.784273",
+			    "longitude": "-122.499999"
+			    },
+			    {
+			    "latitude": "37.784327",
+			    "longitude": "-122.500004"
+			    }
+			  ]
+			},
+			{
+			"hole": "11",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.782965",
+			    "longitude": "-122.498015"
+			    },
+			    {
+			    "latitude": "37.782922",
+			    "longitude": "-122.497966"
+			    },
+			    {
+			    "latitude": "37.782891",
+			    "longitude": "-122.497924"
+			    }
+			  ]
+			},
+			{
+			"hole": "12",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.785061",
+			    "longitude": "-122.498558"
+			    },
+			    {
+			    "latitude": "37.785107",
+			    "longitude": "-122.498583"
+			    },
+			    {
+			    "latitude": "37.785159",
+			    "longitude": "-122.498605"
+			    }
+			  ]
+			},
+			{
+			"hole": "13",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.783186",
+			    "longitude": "-122.49472"
+			    },
+			    {
+			    "latitude": "37.783144",
+			    "longitude": "-122.494665"
+			    },
+			    {
+			    "latitude": "37.783113",
+			    "longitude": "-122.494624"
+			    }
+			  ]
+			},
+			{
+			"hole": "14",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.784629",
+			    "longitude": "-122.496415"
+			    },
+			    {
+			    "latitude": "37.784649",
+			    "longitude": "-122.496493"
+			    },
+			    {
+			    "latitude": "37.784686",
+			    "longitude": "-122.496553"
+			    }
+			  ]
+			},
+			{
+			"hole": "15",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.78598",
+			    "longitude": "-122.498862"
+			    },
+			    {
+			    "latitude": "37.786002",
+			    "longitude": "-122.498914"
+			    },
+			    {
+			    "latitude": "37.78603",
+			    "longitude": "-122.498955"
+			    }
+			  ]
+			},
+			{
+			"hole": "16",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.785176",
+			    "longitude": "-122.495994"
+			    },
+			    {
+			    "latitude": "37.785139",
+			    "longitude": "-122.495945"
+			    },
+			    {
+			    "latitude": "37.785102",
+			    "longitude": "-122.49591"
+			    }
+			  ]
+			},
+			{
+			"hole": "17",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.786315",
+			    "longitude": "-122.494614"
+			    },
+			    {
+			    "latitude": "37.78629",
+			    "longitude": "-122.494531"
+			    },
+			    {
+			    "latitude": "37.786265",
+			    "longitude": "-122.494476"
+			    }
+			  ]
+			},
+			{
+			"hole": "18",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.782755",
+			    "longitude": "-122.494148"
+			    },
+			    {
+			    "latitude": "37.782701",
+			    "longitude": "-122.494158"
+			    },
+			    {
+			    "latitude": "37.782653",
+			    "longitude": "-122.494162"
+			    }
+			  ]
+			}
+		  ]
+        },
+        {
+	    "address": "2100 Sunnydale Avenue",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Gleneagles Golf Course",
+            "id": "3000",
+            "info": "",
+            "latitude": "37.714377",
+            "longitude": "-122.424393",
+	    "phone": "(415) 587-2425",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956"
+        },
+        {	
+	    "address": "970 47th Ave",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Golden Gate Park Golf Course",
+            "id": "3001",
+            "info": "",
+            "latitude": "37.769629",
+            "longitude": "-122.508053",
+	    "phone": "(415) 664-4690",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956"
+        },
+        {
+	    "address": "99 Harding Road",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Harding Park Golf Course",
+            "id": "3002",
+            "info": "",
+            "latitude": "37.724107",
+            "longitude": "-122.49488",
+	    "phone": "(415) 664-4690",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956"
+        },
+        {
+	    "address": "300 34th Avenue",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Lincoln Park Golf Course",
+            "id": "3003",
+            "info": "",
+            "latitude": "37.7842171",
+            "longitude": "-122.494588",
+	    "phone": "(415) 664-4690",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956"
+        },
+        {
+	    "address": "599 Skyline Blvd.",
+            "city": "Daly City, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Olympic Club",
+            "id": "3004",
+            "info": "",
+            "latitude": "37.708821",
+            "longitude": "-122.494931",
+	    "phone": "(415) 664-4690",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2389087"
+        },
+        {
+	    "address": "300 Finley Road, Arguello Gate",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Presidio Golf Course",
+            "id": "3005",
+            "info": "",
+            "latitude": "37.790761",
+            "longitude": "-122.459881",
+	    "phone": "(415) 664-4690",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956",
+	    "caddy": 
+		  [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.790027",
+			    "longitude": "-122.465779"
+			    },
+			    {
+			    "latitude": "37.790053",
+			    "longitude": "-122.46586"
+			    },
+			    {
+			    "latitude": "37.790081",
+			    "longitude": "-122.465916"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.788718",
+			    "longitude": "-122.469527"
+			    },
+			    {
+			    "latitude": "37.788674",
+			    "longitude": "-122.46955"
+			    },
+			    {
+			    "latitude": "37.788626",
+			    "longitude": "-122.469576"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.790895",
+			    "longitude": "-122.467386"
+			    },
+			    {
+			    "latitude": "37.790913",
+			    "longitude": "-122.467254"
+			    },
+			    {
+			    "latitude": "37.790912",
+			    "longitude": "-122.467149"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.791832",
+			    "longitude": "-122.468034"
+			    },
+			    {
+			    "latitude": "37.791847",
+			    "longitude": "-122.468121"
+			    },
+			    {
+			    "latitude": "37.79188",
+			    "longitude": "-122.468205"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.793611",
+			    "longitude": "-122.468184"
+			    },
+			    {
+			    "latitude": "37.793688",
+			    "longitude": "-122.468237"
+			    },
+			    {
+			    "latitude": "37.793776",
+			    "longitude": "-122.468257"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.792604",
+			    "longitude": "-122.465095"
+			    },
+			    {
+			    "latitude": "37.792565",
+			    "longitude": "-122.464998"
+			    },
+			    {
+			    "latitude": "37.792578",
+			    "longitude": "-122.464881"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.793251",
+			    "longitude": "-122.467692"
+			    },
+			    {
+			    "latitude": "37.793275",
+			    "longitude": "-122.46776"
+			    },
+			    {
+			    "latitude": "37.793304",
+			    "longitude": "-122.467836"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.79121",
+			    "longitude": "-122.464706"
+			    },
+			    {
+			    "latitude": "37.791188",
+			    "longitude": "-122.464608"
+			    },
+			    {
+			    "latitude": "37.791177",
+			    "longitude": "-122.464523"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.789647",
+			    "longitude": "-122.461263"
+			    },
+			    {
+			    "latitude": "37.789682",
+			    "longitude": "-122.461152"
+			    },
+			    {
+			    "latitude": "37.78959",
+			    "longitude": "-122.461355"
+			    }
+			  ]
+			},
+						{ 
+			"hole": "10",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.792588",
+			    "longitude": "-122.464006"
+			    },
+			    {
+			    "latitude": "37.792614",
+			    "longitude": "-122.464125"
+			    },
+			    {
+			    "latitude": "37.792617",
+			    "longitude": "-122.464229"
+			    }
+			  ]
+			},
+			{
+			"hole": "11",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.794388",
+			    "longitude": "-122.468211"
+			    },
+			    {
+			    "latitude": "37.794403",
+			    "longitude": "-122.468281"
+			    },
+			    {
+			    "latitude": "37.794429",
+			    "longitude": "-122.468319"
+			    }
+			  ]
+			},
+			{
+			"hole": "12",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.791309",
+			    "longitude": "-122.471762"
+			    },
+			    {
+			    "latitude": "37.79127",
+			    "longitude": "-122.471835"
+			    },
+			    {
+			    "latitude": "37.791234",
+			    "longitude": "-122.471907"
+			    }
+			  ]
+			},
+			{
+			"hole": "13",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.790533",
+			    "longitude": "-122.472051"
+			    },
+			    {
+			    "latitude": "37.79051",
+			    "longitude": "-122.472119"
+			    },
+			    {
+			    "latitude": "37.790439",
+			    "longitude": "-122.472031"
+			    }
+			  ]
+			},
+			{
+			"hole": "14",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.793698",
+			    "longitude": "-122.47292"
+			    },
+			    {
+			    "latitude": "37.793738",
+			    "longitude": "-122.472988"
+			    },
+			    {
+			    "latitude": "37.793756",
+			    "longitude": "-122.472862"
+			    }
+			  ]
+			},
+			{
+			"hole": "15",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.792813",
+			    "longitude": "-122.471993"
+			    },
+			    {
+			    "latitude": "37.792744",
+			    "longitude": "-122.47197"
+			    },
+			    {
+			    "latitude": "37.792752",
+			    "longitude": "-122.471878"
+			    }
+			  ]
+			},
+			{
+			"hole": "16",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.794498",
+			    "longitude": "-122.469391"
+			    },
+			    {
+			    "latitude": "37.794471",
+			    "longitude": "-122.469286"
+			    },
+			    {
+			    "latitude": "37.794391",
+			    "longitude": "-122.469253"
+			    }
+			  ]
+			},
+			{
+			"hole": "17",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.794037",
+			    "longitude": "-122.465293"
+			    },
+			    {
+			    "latitude": "37.793997",
+			    "longitude": "-122.465235"
+			    },
+			    {
+			    "latitude": "37.79394",
+			    "longitude": "-122.465201"
+			    }
+			  ]
+			},
+			{
+			"hole": "18",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.790271",
+			    "longitude": "-122.460343"
+			    },
+			    {
+			    "latitude": "37.790199",
+			    "longitude": "-122.460277"
+			    },
+			    {
+			    "latitude": "37.79014",
+			    "longitude": "-122.460225"
+			    }
+			  ]
+			}
+		  ]
+	    
+        },
+        {
+	    "address": "1310 Junipero Serra Blvd",
+            "city": "San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "San Francisco Golf Club",
+            "id": "3006",
+            "info": "",
+            "latitude": "37.711273",
+            "longitude": "-122.471343",
+	    "phone": "(415) 664-4690",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2487956"
+        },
+	{	
+	    "address": "844 West Orange Avenue",
+            "city": "South San Francisco, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "California Golf Club",
+            "id": "3007",
+            "info": "",
+            "latitude": "37.652947",
+            "longitude": "-122.436366",
+	    "phone": "(650) 589-0144",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2496728"
+        },
+	{
+	    "address": "2300 Junipero Serra Blvd.",
+            "city": "Daly City, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Lake Merced Golf Club",
+            "id": "3008",
+            "info": "",
+            "latitude": "37.695659",
+            "longitude": "-122.471648",
+	    "phone": "(650) 755-2239",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2389087"
+        }
+    ]
+    }
+}

@@ -1,0 +1,969 @@
+{ "golfCourses": {
+    "golfCourse": [
+        {
+	    "address": "3035 Novato Blvd.",
+            "city": "Novato, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Indian Valley Golf Course",
+            "id": "1000",
+            "info": "",
+            "latitude": "38.121188",
+            "longitude": "-122.635531",
+	    "phone": "(415) 897-1118",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2462429",
+	    	    "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.107826",
+			    "longitude": "-122.645721"
+			    },
+			    {
+			    "latitude": "38.107732",
+			    "longitude": "-122.645769"
+			    },
+			    {
+			    "latitude": "38.107755",
+			    "longitude": "-122.64593"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.10689",
+			    "longitude": "-122.642315"
+			    },
+			    {
+			    "latitude": "38.106897",
+			    "longitude": "-122.642241"
+			    },
+			    {
+			    "latitude": "38.106923",
+			    "longitude": "-122.642151"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.106468",
+			    "longitude": "-122.646672"
+			    },
+			    {
+			    "latitude": "38.106473",
+			    "longitude": "-122.64682"
+			    },
+			    {
+			    "latitude": "38.106499",
+			    "longitude": "-122.646925"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.107145",
+			    "longitude": "-122.647675"
+			    },
+			    {
+			    "latitude": "38.107176",
+			    "longitude": "-122.647758"
+			    },
+			    {
+			    "latitude": "38.107247",
+			    "longitude": "-122.647786"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.109937",
+			    "longitude": "-122.647794"
+			    },
+			    {
+			    "latitude": "38.109949",
+			    "longitude": "-122.64762"
+			    },
+			    {
+			    "latitude": "38.110021",
+			    "longitude": "-122.64756"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.107694",
+			    "longitude": "-122.647322"
+			    },
+			    {
+			    "latitude": "38.107577",
+			    "longitude": "-122.647391"
+			    },
+			    {
+			    "latitude": "38.107472",
+			    "longitude": "-122.647489"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.110242",
+			    "longitude": "-122.645739"
+			    },
+			    {
+			    "latitude": "38.110312",
+			    "longitude": "-122.645739"
+			    },
+			    {
+			    "latitude": "38.110389",
+			    "longitude": "-122.645728"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.109636",
+			    "longitude": "-122.644003"
+			    },
+			    {
+			    "latitude": "38.109576",
+			    "longitude": "-122.643947"
+			    },
+			    {
+			    "latitude": "38.109527",
+			    "longitude": "-122.643858"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.109971",
+			    "longitude": "-122.641025"
+			    },
+			    {
+			    "latitude": "38.10994",
+			    "longitude": "-122.6409"
+			    },
+			    {
+			    "latitude": "38.110048",
+			    "longitude": "-122.64089"
+			    }
+			  ]
+			},
+			{ 
+			"hole": "10",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.11098",
+			    "longitude": "-122.635073"
+			    },
+			    {
+			    "latitude": "38.111086",
+			    "longitude": "-122.635088"
+			    },
+			    {
+			    "latitude": "38.111037",
+			    "longitude": "-122.634925"
+			    }
+			  ]
+			},
+			{
+			"hole": "11",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.113892",
+			    "longitude": "-122.634535"
+			    },
+			    {
+			    "latitude": "38.11391",
+			    "longitude": "-122.634464"
+			    },
+			    {
+			    "latitude": "38.113951",
+			    "longitude": "-122.634602"
+			    }
+			  ]
+			},
+			{
+			"hole": "12",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.110957",
+			    "longitude": "-122.633962"
+			    },
+			    {
+			    "latitude": "38.110833",
+			    "longitude": "-122.63399"
+			    },
+			    {
+			    "latitude": "38.110725",
+			    "longitude": "-122.634138"
+			    }
+			  ]
+			},
+			{
+			"hole": "13",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.110361",
+			    "longitude": "-122.633392"
+			    },
+			    {
+			    "latitude": "38.110368",
+			    "longitude": "-122.633234"
+			    },
+			    {
+			    "latitude": "38.110337",
+			    "longitude": "-122.633099"
+			    }
+			  ]
+			},
+			{
+			"hole": "14",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.106073",
+			    "longitude": "-122.63177"
+			    },
+			    {
+			    "latitude": "38.10601",
+			    "longitude": "-122.631784"
+			    },
+			    {
+			    "latitude": "38.105946",
+			    "longitude": "-122.631826"
+			    }
+			  ]
+			},
+			{
+			"hole": "15",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.107872",
+			    "longitude": "-122.634657"
+			    },
+			    {
+			    "latitude": "38.107777",
+			    "longitude": "-122.634737"
+			    },
+			    {
+			    "latitude": "38.107808",
+			    "longitude": "-122.634856"
+			    }
+			  ]
+			},
+			{
+			"hole": "16",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.105712",
+			    "longitude": "-122.638372"
+			    },
+			    {
+			    "latitude": "38.105672",
+			    "longitude": "-122.638393"
+			    },
+			    {
+			    "latitude": "38.105624",
+			    "longitude": "-122.638439"
+			    }
+			  ]
+			},
+			{
+			"hole": "17",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.106427",
+			    "longitude": "-122.64061"
+			    },
+			    {
+			    "latitude": "38.106493",
+			    "longitude": "-122.640672"
+			    },
+			    {
+			    "latitude": "38.106528",
+			    "longitude": "-122.640758"
+			    }
+			  ]
+			},
+			{
+			"hole": "18",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.109196",
+			    "longitude": "-122.640683"
+			    },
+			    {
+			    "latitude": "38.109115",
+			    "longitude": "-122.640546"
+			    },
+			    {
+			    "latitude": "38.109044",
+			    "longitude": "-122.640464"
+			    }
+			  ]
+			}
+		    ]
+        },
+        {	
+        "address": "500 Country Club Drive",
+        "city": "Novato, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Marin Country Club",
+            "id": "1001",
+            "info": "",
+            "latitude": "38.063466",
+            "longitude": "-122.566373",
+	    "phone": "(415) 382-6707",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2462429"
+        },
+        {
+        "address": "350 Smith Ranch Road",
+        "city": "San Rafael, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "McInnis Golf Course",
+            "id": "1002",
+            "info": "",
+            "latitude": "38.021185",
+            "longitude": "-122.519681",
+	    "phone": "(415) 492-1800",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2488201",
+	    "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.020487",
+			    "longitude": "-122.518478"
+			    },
+			    {
+			    "latitude": "38.02051",
+			    "longitude": "-122.518352"
+			    },
+			    {
+			    "latitude": "38.020536",
+			    "longitude": "-122.518226"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021626",
+			    "longitude": "-122.519494"
+			    },
+			    {
+			    "latitude": "38.021728",
+			    "longitude": "-122.519516"
+			    },
+			    {
+			    "latitude": "38.021764",
+			    "longitude": "-122.519446"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021005",
+			    "longitude": "-122.518579"
+			    },
+			    {
+			    "latitude": "38.020949",
+			    "longitude": "-122.518481"
+			    },
+			    {
+			    "latitude": "38.020892",
+			    "longitude": "-122.518407"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.022733",
+			    "longitude": "-122.518492"
+			    },
+			    {
+			    "latitude": "38.022757",
+			    "longitude": "-122.518399"
+			    },
+			    {
+			    "latitude": "38.022783",
+			    "longitude": "-122.51831"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.023611",
+			    "longitude": "-122.517729"
+			    },
+			    {
+			    "latitude": "38.023653",
+			    "longitude": "-122.517632"
+			    },
+			    {
+			    "latitude": "38.023728",
+			    "longitude": "-122.517583"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.022594",
+			    "longitude": "-122.519803"
+			    },
+			    {
+			    "latitude": "38.022501",
+			    "longitude": "-122.519886"
+			    },
+			    {
+			    "latitude": "38.022422",
+			    "longitude": "-122.519889"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021344",
+			    "longitude": "-122.521021"
+			    },
+			    {
+			    "latitude": "38.021293",
+			    "longitude": "-122.521113"
+			    },
+			    {
+			    "latitude": "38.021237",
+			    "longitude": "-122.521175"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.022497",
+			    "longitude": "-122.52041"
+			    },
+			    {
+			    "latitude": "38.022613",
+			    "longitude": "-122.520398"
+			    },
+			    {
+			    "latitude": "38.022704",
+			    "longitude": "-122.520359"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021158",
+			    "longitude": "-122.522219"
+			    },
+			    {
+			    "latitude": "38.0211",
+			    "longitude": "-122.522317"
+			    },
+			    {
+			    "latitude": "38.021037",
+			    "longitude": "-122.522402"
+			    }
+			  ]
+			}
+		    ]
+	    
+        },
+        {
+        "address": "1001 Bolinas Road",
+        "city": "Fairfax, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Meadow Club",
+            "id": "1003",
+            "info": "",
+            "latitude": "37.969694",
+            "longitude": "-122.615082",
+	    "phone": "(415) 456-9393",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2401349"
+        },
+        {
+        "address": "280 Buena Vista Avenue",
+        "city": "Mill Valley, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",	
+            "name": "Mill Valley Golf Course",
+            "id": "1004",
+            "info": "",
+            "latitude": "37.912936",
+            "longitude": "-122.534873",
+	    "phone": "(415) 388-9982",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2451166"
+        },
+        {
+        "address": "333 Biscayne Drive",
+        "city": "San Rafael, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Peacock Gap Golf Club",
+            "id": "1005",
+            "info": "",
+            "latitude": "37.99459",
+            "longitude": "-122.465479",
+	    "phone": "(415) 453-4940",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2488201",
+	    "caddy": 
+		  [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.992139",
+			    "longitude": "-122.468425"
+			    },
+			    {
+			    "latitude": "37.992069",
+			    "longitude": "-122.46846"
+			    },
+			    {
+			    "latitude": "37.992024",
+			    "longitude": "-122.468537"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.995334",
+			    "longitude": "-122.468874"
+			    },
+			    {
+			    "latitude": "37.995426",
+			    "longitude": "-122.468859"
+			    },
+			    {
+			    "latitude": "37.995463",
+			    "longitude": "-122.468756"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.994212",
+			    "longitude": "-122.469636"
+			    },
+			    {
+			    "latitude": "37.994141",
+			    "longitude": "-122.469608"
+			    },
+			    {
+			    "latitude": "37.994105",
+			    "longitude": "-122.469516"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.98893",
+			    "longitude": "-122.470391"
+			    },
+			    {
+			    "latitude": "37.988854",
+			    "longitude": "-122.470486"
+			    },
+			    {
+			    "latitude": "37.988732",
+			    "longitude": "-122.47046"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.991401",
+			    "longitude": "-122.470762"
+			    },
+			    {
+			    "latitude": "37.991467",
+			    "longitude": "-122.470839"
+			    },
+			    {
+			    "latitude": "37.991513",
+			    "longitude": "-122.470931"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.992765",
+			    "longitude": "-122.47"
+			    },
+			    {
+			    "latitude": "37.992885",
+			    "longitude": "-122.469976"
+			    },
+			    {
+			    "latitude": "37.992995",
+			    "longitude": "-122.470057"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.991747",
+			    "longitude": "-122.471706"
+			    },
+			    {
+			    "latitude": "37.991653",
+			    "longitude": "-122.471643"
+			    },
+			    {
+			    "latitude": "37.991562",
+			    "longitude": "-122.47154"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.995378",
+			    "longitude": "-122.469951"
+			    },
+			    {
+			    "latitude": "37.99545",
+			    "longitude": "-122.469987"
+			    },
+			    {
+			    "latitude": "37.995512",
+			    "longitude": "-122.470014"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.995688",
+			    "longitude": "-122.466679"
+			    },
+			    {
+			    "latitude": "37.995701",
+			    "longitude": "-122.466594"
+			    },
+			    {
+			    "latitude": "37.995758",
+			    "longitude": "-122.466542"
+			    }
+			  ]
+			},
+						{ 
+			"hole": "10",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.993638",
+			    "longitude": "-122.463965"
+			    },
+			    {
+			    "latitude": "37.993623",
+			    "longitude": "-122.463892"
+			    },
+			    {
+			    "latitude": "37.993673",
+			    "longitude": "-122.463818"
+			    }
+			  ]
+			},
+			{
+			"hole": "11",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.994837",
+			    "longitude": "-122.461439"
+			    },
+			    {
+			    "latitude": "37.994923",
+			    "longitude": "-122.461412"
+			    },
+			    {
+			    "latitude": "37.99501",
+			    "longitude": "-122.461392"
+			    }
+			  ]
+			},
+			{
+			"hole": "12",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.992117",
+			    "longitude": "-122.464961"
+			    },
+			    {
+			    "latitude": "37.992095",
+			    "longitude": "-122.465044"
+			    },
+			    {
+			    "latitude": "37.992083",
+			    "longitude": "-122.465121"
+			    }
+			  ]
+			},
+			{
+			"hole": "13",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.993171",
+			    "longitude": "-122.464974"
+			    },
+			    {
+			    "latitude": "37.993235",
+			    "longitude": "-122.464961"
+			    },
+			    {
+			    "latitude": "37.993305",
+			    "longitude": "-122.46495"
+			    }
+			  ]
+			},
+			{
+			"hole": "14",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.9904",
+			    "longitude": "-122.468331"
+			    },
+			    {
+			    "latitude": "37.990339",
+			    "longitude": "-122.468382"
+			    },
+			    {
+			    "latitude": "37.990293",
+			    "longitude": "-122.468477"
+			    }
+			  ]
+			},
+			{
+			"hole": "15",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.988275",
+			    "longitude": "-122.469363"
+			    },
+			    {
+			    "latitude": "37.988191",
+			    "longitude": "-122.469298"
+			    },
+			    {
+			    "latitude": "37.98818",
+			    "longitude": "-122.469174"
+			    }
+			  ]
+			},
+			{
+			"hole": "16",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.988116",
+			    "longitude": "-122.470957"
+			    },
+			    {
+			    "latitude": "37.988077",
+			    "longitude": "-122.47112"
+			    },
+			    {
+			    "latitude": "37.988029",
+			    "longitude": "-122.471201"
+			    }
+			  ]
+			},
+			{
+			"hole": "17",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.9907",
+			    "longitude": "-122.469009"
+			    },
+			    {
+			    "latitude": "37.990768",
+			    "longitude": "-122.469008"
+			    },
+			    {
+			    "latitude": "37.990832",
+			    "longitude": "-122.46902"
+			    }
+			  ]
+			},
+			{
+			"hole": "18",
+			"placement":
+			  [
+			    {
+			    "latitude": "37.993458",
+			    "longitude": "-122.465863"
+			    },
+			    {
+			    "latitude": "37.993514",
+			    "longitude": "-122.465765"
+			    },
+			    {
+			    "latitude": "37.99358",
+			    "longitude": "-122.465757"
+			    }
+			  ]
+			}
+		  ]
+        },
+        {
+        "address": "5800 Sir Francis Drake Blvd.",
+        "city": "San Geronimo, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "San Geronimo Golf Course",
+            "id": "1006",
+            "info": "",
+            "latitude": "38.016249",
+            "longitude": "-122.660186",
+	    "phone": "(415) 488-4030",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2488016"
+        },
+        {
+        "address": "9 Stonetree Lane",
+        "city": "Novato, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",	
+            "name": "Stone Tree Golf Club",
+            "id": "1007",
+            "info": "",
+            "latitude": "38.103714",
+            "longitude": "-122.506592",
+	    "phone": "(415) 209-6090",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2462429"
+        }
+    ]
+    }
+}

@@ -4,5 +4,9 @@
     <string name="app_name">CliponCaddie</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
+    <string name="hole">Hole</string>
+    <string name="back">Back</string>
+    <string name="middle">Middle</string>
+    <string name="front">Front</string>
 
 </resources>
