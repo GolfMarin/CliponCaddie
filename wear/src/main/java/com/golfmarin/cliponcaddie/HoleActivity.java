@@ -7,8 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;//
 import android.content.IntentSender;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.wearable.view.DismissOverlayView;
@@ -39,10 +45,16 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-public class HoleActivity extends Activity implements View.OnLongClickListener,
+import static android.util.FloatMath.cos;
+import static android.util.FloatMath.sin;
+import static android.util.FloatMath.sqrt;
+
+public class HoleActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+        LocationListener,
+        View.OnLongClickListener,
+        SensorEventListener {
 
     private static final String TAG = "HoleActivity";
 
@@ -66,6 +78,16 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
      * waiting for resolution intent to return.
      */
     private boolean mIsInResolution;
+
+    // Sensor globals
+    private SensorManager senSensorManager;
+    private Sensor senAccelerometer;
+
+    // Create a constant to convert nanoseconds to seconds.
+    private static final float NS2S = 1.0f / 1000000000.0f;
+    private final float[] deltaRotationVector = new float[4];
+
+    private float timestamp;
 
     /**
      * Local broadcasts (future for data layer)
@@ -109,12 +131,34 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         messageFilter = new IntentFilter(Intent.ACTION_SEND);
         messageReceiver = new MessageReceiver();
 
-        // Setup gesture detector
+        // Set up gesture detector
         gestureDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
+        // Set up sensor listener
+        senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
+        // Disable screen timeout, the sensors will handle dimming
+        // Settings.System.putString(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT, "-1");
+
+        // Turn off auto brightness
+        int brightnessMode = 0;
+        Log.i(TAG, "Ready to set brightness mode.");
+        //try {
+        //   brightnessMode = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
+        //   Log.i(TAG, "Screen brightness mode: " + brightnessMode);
+        //   if (brightnessMode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+        //       Log.i(TAG, "Found automatic screen brightness.");
+        Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+
+        //}
+        //catch(Settings.SettingNotFoundException e) {
+        //    Log.i(TAG, "Screen brightness setting threw an exception");
+        //}
 
     }
+
     // *************************
     // App lifecycle callbacks
     // **************************
@@ -151,8 +195,9 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
 
     @Override
     protected void onPause() {
-
+        // Unregister listeners
         LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
+        senSensorManager.unregisterListener(this);
         super.onPause();
     }
 
@@ -161,6 +206,9 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         // Register a local broadcast receiver, defined below.
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
+
+        // Register the sensor manager
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_UI);
     }
 
     /**
@@ -178,8 +226,8 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
     @Override
     public void onConnected(Bundle connectionHint) {
 
-            Log.i(TAG, "Connected to google services");
-       // Register for location services
+        Log.i(TAG, "Connected to google services");
+        // Register for location services
 
         // Create the LocationRequest object
         LocationRequest locationRequest = LocationRequest.create();
@@ -252,10 +300,12 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         }
     }
 
-    /*********************************
-    * Location service callback
-    * @param location
-    ***********************************/
+    /**
+     * ******************************
+     * Location service callback
+     *
+     * @param location *********************************
+     */
 
     @Override
     public void onLocationChanged(Location location) {
@@ -275,13 +325,13 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         }
         // Refresh the distances to hole placements
         if ((location != null) && (location.getAccuracy() < 25.0) && (location.getAccuracy() > 0.0)) {
-        updateDisplay(location);
+            updateDisplay(location);
         }
     }
 
     // Long click closes the wearable app
     public boolean onLongClick(View v) {
-    //    dismissOverlayView.show();
+        //    dismissOverlayView.show();
         return true;
     }
 
@@ -328,7 +378,7 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         @Override
         public void onLongPress(MotionEvent event) {
             Log.i(TAG, "onLongClick: " + event.toString());
-        //        dismissOverlayView.show();
+            //        dismissOverlayView.show();
         }
 
         @Override
@@ -357,8 +407,7 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
                     currentHoleNum--;
                     currentHole = allHoles.get(currentHoleNum - 1);
                 }
-            }
-            else {
+            } else {
                 // Swipe right (plus)
                 new SendToDataLayerThread("/swipe", "plus").start();
                 if (currentHoleNum < allHoles.size()) {
@@ -398,10 +447,11 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
 
     /*****************************
      * Course and hole methods
-    ******************************/
+     ******************************/
 
     /**
      * Scans through list of courses to find the one close to the current location.
+     *
      * @param location current gps location
      * @return Courses closest to current location
      */
@@ -416,7 +466,7 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         for (Course course : allCourses) {
 
             // Not all courses have hole locations, skip those
-            /*
+
             if (course.holeList != null) {
                 float yards = location.distanceTo(course.getLocation()) * conv;
                 if (yards < bestYards) {
@@ -431,16 +481,25 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
                     Log.i(TAG, "Found club with multiple courses");
                 }
             }
-            */
 
-            if(course.name.equals("Indian Valley Golf Course")) bestCourses.add(course);
+/*
+            if (course.name.equals("Emerald Hills Golf Course")) {
+                bestCourses.clear();
+                bestCourses.add(course);
+                Log.i(TAG, "Matched course: " + course.name);
+            }
+*/
+
+            Log.i(TAG, "Course name: " + course.name);
         }
+
         startup = false;
         return bestCourses;
     }
 
     /**
      * Calculates distances to placements and updates the UI
+     *
      * @param location Current watch location
      */
 
@@ -465,6 +524,99 @@ public class HoleActivity extends Activity implements View.OnLongClickListener,
         // Keep the hole number display current
         holeView.setText("Hole " + currentHole.holeNum);
     }
+
+    /**
+     * Handle Sensor callbacks
+     */
+
+    private Handler displayHandler = new Handler();
+
+    @Override
+    public final void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Do something here if sensor accuracy changes.
+    }
+
+    @Override
+    public final void onSensorChanged(SensorEvent event) {
+        // The light sensor returns a single value.
+        // Many sensors return 3 values, one for each axis.
+        // float lux = event.values[0];
+        // Do something with this sensor value.
+
+        // This timestep's delta rotation to be multiplied by the current rotation
+        // after computing it from the gyro sample data.
+
+        if (timestamp != 0) {
+            final float dT = (event.timestamp - timestamp) * NS2S;
+            // Axis of the rotation sample, not normalized yet.
+            float axisX = event.values[0];
+            float axisY = event.values[1];
+            float axisZ = event.values[2];
+
+            // Calculate the angular speed of the sample
+            float omegaMagnitude = sqrt(axisX * axisX + axisY * axisY + axisZ * axisZ);
+
+            Log.i(TAG, "omegaMagnitude = " + omegaMagnitude);
+
+            // Normalize the rotation vector if it's big enough to get the axis
+            // (that is, EPSILON should represent your maximum allowable margin of error)
+            //   if (omegaMagnitude > EPSILON) {
+            axisX /= omegaMagnitude;
+            axisY /= omegaMagnitude;
+            axisZ /= omegaMagnitude;
+
+            Log.i(TAG, "axisX, axisY, axisZ: " + axisX + ", " + axisY + ", " + axisZ);
+            //   }
+            if ((axisZ < .7) ) {
+                Log.i(TAG, "Dim brightness");
+                Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
+                //WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+                //    lp.screenBrightness =0.0f;
+                //    lp.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_OFF;
+                requireRotate = 0;
+
+            } else if ((axisZ > .9) && (requireRotate == 0))  {
+                Log.i(TAG, "Restore brightness");
+                Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "255");
+
+                //    WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+                //    lp.screenBrightness = (WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE);
+
+                // Start a handler to implement the maximum time for normal brightness
+                displayHandler.postDelayed(displayTimeout, 4000);
+                requireRotate = 1;
+            }
+
+            // Integrate around this axis with the angular speed by the timestep
+            // in order to get a delta rotation from this sample over the timestep
+            // We will convert this axis-angle representation of the delta rotation
+            // into a quaternion before turning it into the rotation matrix.
+            float thetaOverTwo = omegaMagnitude * dT / 2.0f;
+            float sinThetaOverTwo = sin(thetaOverTwo);
+            float cosThetaOverTwo = cos(thetaOverTwo);
+            deltaRotationVector[0] = sinThetaOverTwo * axisX;
+            deltaRotationVector[1] = sinThetaOverTwo * axisY;
+            deltaRotationVector[2] = sinThetaOverTwo * axisZ;
+            deltaRotationVector[3] = cosThetaOverTwo;
+        }
+        timestamp = event.timestamp;
+        float[] deltaRotationMatrix = new float[9];
+        SensorManager.getRotationMatrixFromVector(deltaRotationMatrix, deltaRotationVector);
+
+    }
+
+    // Dim the display after a timeout
+    // Set flag that requires wrist rotation to restore brightness
+
+    int requireRotate = 0;
+
+    protected Runnable displayTimeout = new Runnable() {
+        @Override
+        public void run() {
+            Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
+            requireRotate = 1;
+        }
+    };
 }
 
 

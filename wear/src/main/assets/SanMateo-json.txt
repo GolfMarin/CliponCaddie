@@ -6,7 +6,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Burlingame Country Club",
             "id": "4000",
             "info": "",
@@ -18,13 +18,13 @@
 	    "thumbnailURL": "",
 	    "woeid": "2422103"
         },
-        {	
+        {
 	    "address": "6650 Golf Course Drive",
             "city": "Burlingame, CA",
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Crystal Springs Golf Course",
             "id": "4001",
             "info": "",
@@ -35,9 +35,9 @@
 	    "slope": "",
 	    "thumbnailURL": "",
 	    "woeid": "2372044",
-	    "caddy": 
+	    "caddy":
 		  [
-			{ 
+			{
 			"hole": "1",
 			"placement":
 			  [
@@ -199,7 +199,7 @@
 			    }
 			  ]
 			},
-						{ 
+						{
 			"hole": "10",
 			"placement":
 			  [
@@ -369,7 +369,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "9",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Cypress Golf Course",
             "id": "4002",
             "info": "",
@@ -387,7 +387,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "9",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Emerald Hills Golf Course",
             "id": "4003",
             "info": "",
@@ -405,7 +405,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Green Hills Country Club",
             "id": "4004",
             "info": "",
@@ -423,7 +423,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Half Moon Bay Golf Links",
             "id": "4005",
             "info": "",
@@ -441,7 +441,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "9",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Mariners Point Golf Links",
             "id": "4006",
             "info": "",
@@ -459,7 +459,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Penisula Golf Course",
             "id": "4007",
             "info": "",
@@ -477,7 +477,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Menlo Country Club",
             "id": "4008",
             "info": "",
@@ -495,7 +495,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Poplar Creek Golf Course",
             "id": "4009",
             "info": "",
@@ -513,7 +513,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Sharon Heights Golf Course",
             "id": "4010",
             "info": "",
@@ -531,7 +531,7 @@
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
-	    "imageURL": "",	
+	    "imageURL": "",
             "name": "Sharp Park Golf Course",
             "id": "40011",
             "info": "",
@@ -542,7 +542,190 @@
 	    "slope": "",
 	    "thumbnailURL": "",
 	    "woeid": "2467340"
-        }
-    ]
+        },
+        {
+     	    "address": "938 Wilmington Way",
+                 "city": "Redwood City, CA",
+     	    "courseInfo": "",
+     	    "directions": "",
+     	    "holes": "9",
+     	    "imageURL": "",
+                 "name": "Emerald Hills Golf Course",
+                 "id": "4012",
+                 "info": "",
+                 "latitude": "37.454309",
+                 "longitude": "-122.264829",
+     	    "phone": "(650) 368-7820",
+     	    "isPublic": true,
+     	    "slope": "",
+     	    "thumbnailURL": "",
+     	    "woeid": "2372044",
+     	    "caddy":
+     		  [
+     			{
+     			"hole": "1",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.452223",
+     			    "longitude": "-122.263155"
+     			    },
+     			    {
+     			    "latitude": "37.452198",
+     			    "longitude": "-122.263108"
+     			    },
+     			    {
+     			    "latitude": "37.452172",
+     			    "longitude": "-122.26306"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "2",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.452329",
+     			    "longitude": "-122.265251"
+     			    },
+     			    {
+     			    "latitude": "37.452359",
+     			    "longitude": "-122.265307"
+     			    },
+     			    {
+     			    "latitude": "37.452383",
+     			    "longitude": "-122.265356"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "3",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.453101",
+     			    "longitude": "-122.264007"
+     			    },
+     			    {
+     			    "latitude": "37.453079",
+     			    "longitude": "-122.26398"
+     			    },
+     			    {
+     			    "latitude": "37.453058",
+     			    "longitude": "-122.263943"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "4",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.453356",
+     			    "longitude": "-122.265045"
+     			    },
+     			    {
+     			    "latitude": "37.453386",
+     			    "longitude": "-122.26502"
+     			    },
+     			    {
+     			    "latitude": "37.453428",
+     			    "longitude": "-122.265022"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "5",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.453737",
+     			    "longitude": "-122.266425"
+     			    },
+     			    {
+     			    "latitude": "37.453729",
+     			    "longitude": "-122.266465"
+     			    },
+     			    {
+     			    "latitude": "37.45373",
+     			    "longitude": "-122.266501"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "6",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.454916",
+     			    "longitude": "-122.266317"
+     			    },
+     			    {
+     			    "latitude": "37.454947",
+     			    "longitude": "-122.266301"
+     			    },
+     			    {
+     			    "latitude": "37.454977",
+     			    "longitude": "-122.26629"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "7",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.455644",
+     			    "longitude": "-122.267046"
+     			    },
+     			    {
+     			    "latitude": "37.455662",
+     			    "longitude": "-122.267074"
+     			    },
+     			    {
+     			    "latitude": "37.455673",
+     			    "longitude": "-122.267101"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "8",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.455673",
+     			    "longitude": "-122.267101"
+     			    },
+     			    {
+     			    "latitude": "37.455252",
+     			    "longitude": "-122.265885"
+     			    },
+     			    {
+     			    "latitude": "37.45523",
+     			    "longitude": "-122.265865"
+     			    }
+     			  ]
+     			},
+     			{
+     			"hole": "9",
+     			"placement":
+     			  [
+     			    {
+     			    "latitude": "37.45393",
+     			    "longitude": "-122.265655"
+     			    },
+     			    {
+     			    "latitude": "37.453896",
+     			    "longitude": "-122.265638"
+     			    },
+     			    {
+     			    "latitude": "37.453867",
+     			    "longitude": "-122.265627"
+     			    }
+     			  ]
+     			}
+     		  ]
+             }
+        ]
     }
 }
