@@ -1,5 +1,22 @@
 package com.golfmarin.cliponcaddie;
 
+/*
+        Copyright (C) 2015  Michael Hahn
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public License
+        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,12 +36,11 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.wearable.view.DismissOverlayView;
 import android.support.wearable.view.WatchViewStub;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -38,22 +54,20 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
-import com.google.android.gms.wearable.WearableListenerService;
-
-
-import android.util.Log;
-
 import java.util.ArrayList;
-
 import static android.util.FloatMath.cos;
 import static android.util.FloatMath.sin;
 import static android.util.FloatMath.sqrt;
+
+/*
+  This activity initializes with the closest course
+  then displays distances from current location to the hole placements.
+*/
 
 public class HoleActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
-        View.OnLongClickListener,
         SensorEventListener {
 
     private static final String TAG = "HoleActivity";
@@ -70,31 +84,34 @@ public class HoleActivity extends Activity implements
     private TextView middleView;
     private TextView frontView;
 
+    private DismissOverlayView dismissOverlayView;
+
     private GestureDetectorCompat gestureDetector;
 
     private GoogleApiClient googleClient;
-    /**
-     * Determines if the client is in a resolution state, and
-     * waiting for resolution intent to return.
-     */
-    private boolean mIsInResolution;
+
+
 
     // Sensor globals
+    private boolean mIsInResolution;
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
 
-    // Create a constant to convert nanoseconds to seconds.
+    // Constant to convert nanoseconds to seconds.
     private static final float NS2S = 1.0f / 1000000000.0f;
     private final float[] deltaRotationVector = new float[4];
 
     private float timestamp;
 
-    /**
+    /*
      * Local broadcasts (future for data layer)
      */
     MessageReceiver messageReceiver;
     IntentFilter messageFilter;
 
+    /*
+    * Golf course variables
+     */
     private ArrayList<Course> allCourses;
     private Course currentCourse;
     private ArrayList<Hole> allHoles;
@@ -105,8 +122,6 @@ public class HoleActivity extends Activity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.i(TAG, "Wearable hole activity started");
 
         setContentView(R.layout.activity_hole);
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
@@ -125,7 +140,6 @@ public class HoleActivity extends Activity implements
         // Initialize data model containing all golf courses
         DataModel dm = new DataModel(this);
         allCourses = dm.getCourses();
-        Log.i(TAG, "All courses: " + allCourses);
 
         // Setup a local broadcast receiver
         messageFilter = new IntentFilter(Intent.ACTION_SEND);
@@ -134,29 +148,18 @@ public class HoleActivity extends Activity implements
         // Set up gesture detector
         gestureDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
+        // Set up dismiss overlay view
+        dismissOverlayView = (DismissOverlayView) findViewById(R.id.dismiss_overlay);
+        dismissOverlayView.setIntroText(R.string.dismiss_intro);
+        dismissOverlayView.showIntroIfNecessary();
+
         // Set up sensor listener
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        // Disable screen timeout, the sensors will handle dimming
-        // Settings.System.putString(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT, "-1");
-
         // Turn off auto brightness
-        int brightnessMode = 0;
-        Log.i(TAG, "Ready to set brightness mode.");
-        //try {
-        //   brightnessMode = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
-        //   Log.i(TAG, "Screen brightness mode: " + brightnessMode);
-        //   if (brightnessMode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
-        //       Log.i(TAG, "Found automatic screen brightness.");
         Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-
-        //}
-        //catch(Settings.SettingNotFoundException e) {
-        //    Log.i(TAG, "Screen brightness setting threw an exception");
-        //}
-
     }
 
     // *************************
@@ -179,7 +182,6 @@ public class HoleActivity extends Activity implements
         }
         // Connect the Google API client when the Activity becomes visible
         googleClient.connect();
-        Log.i(TAG, "Connecting watch google client.");
     }
 
     // Disconnect from Google Play Services when the Activity is no longer visible
@@ -226,7 +228,6 @@ public class HoleActivity extends Activity implements
     @Override
     public void onConnected(Bundle connectionHint) {
 
-        Log.i(TAG, "Connected to google services");
         // Register for location services
 
         // Create the LocationRequest object
@@ -246,13 +247,12 @@ public class HoleActivity extends Activity implements
 
     @Override
     public void onConnectionSuspended(int cause) {
-        Log.i(TAG, "GoogleApiClient connection suspended");
         retryConnecting();
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.i(TAG, "GoogleApiClient connection failed: " + connectionResult.toString());
+
         if (!connectionResult.hasResolution()) {
             // Show a localized error dialog.
             GooglePlayServicesUtil.getErrorDialog(
@@ -274,7 +274,6 @@ public class HoleActivity extends Activity implements
         try {
             connectionResult.startResolutionForResult(this, REQUEST_CODE_RESOLUTION);
         } catch (IntentSender.SendIntentException e) {
-            Log.e(TAG, "Exception while starting resolution activity", e);
             retryConnecting();
         }
 
@@ -301,38 +300,27 @@ public class HoleActivity extends Activity implements
     }
 
     /**
-     * ******************************
      * Location service callback
-     *
-     * @param location *********************************
-     */
+    */
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.i(TAG, "Location Changed for wearable.");
         // Find closest course, if just starting up and location is valid
         if (((startup == true) && location != null)) {
             currentCourse = (getCurrentCourse(location)).get(0);
+            Log.i(TAG, "Current course: " + currentCourse.name);
             if (currentCourse == null) return;
             else {
                 startup = false;
                 allHoles = currentCourse.holeList;
                 currentHoleNum = 1;
                 currentHole = allHoles.get(0);
-                Log.i(TAG, "Local course successfully initialized: " + currentCourse.name);
-                Log.i(TAG, "Current hole location: " + "Location");
             }
         }
         // Refresh the distances to hole placements
         if ((location != null) && (location.getAccuracy() < 25.0) && (location.getAccuracy() > 0.0)) {
             updateDisplay(location);
         }
-    }
-
-    // Long click closes the wearable app
-    public boolean onLongClick(View v) {
-        //    dismissOverlayView.show();
-        return true;
     }
 
     // Local broadcast receiver callback to receive messages
@@ -346,7 +334,6 @@ public class HoleActivity extends Activity implements
 
                 Bundle b = intent.getBundleExtra("distances");
                 if (b != null) {
-                    Log.i(TAG, "Wearable device, message received on data layer.");
                 }
             }
         }
@@ -356,14 +343,14 @@ public class HoleActivity extends Activity implements
     // Gesture handling
     // Swipe increments or decrements hole number
     // Double tap changes to alternate course
-    // Long press to dismiss app (later)
+    // Long press to dismiss app
     //************************************
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.i(TAG, "onTouchEvent override entered");
+
         this.gestureDetector.onTouchEvent(event);
-        return super.onTouchEvent(event);
+        return gestureDetector.onTouchEvent(event)||super.onTouchEvent(event);
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -371,34 +358,32 @@ public class HoleActivity extends Activity implements
 
         @Override
         public boolean onDown(MotionEvent event) {
-            Log.i(TAG, "onDown: " + event.toString());
+
             return true;
         }
 
+        // Display dismiss overlay to close this app
+
         @Override
         public void onLongPress(MotionEvent event) {
-            Log.i(TAG, "onLongClick: " + event.toString());
-            //        dismissOverlayView.show();
+
+            dismissOverlayView.show();
         }
 
         @Override
         public boolean onDoubleTap(MotionEvent event) {
-            Log.i(TAG, "onDoubleTap: " + event.toString());
-            // Change to alternate course at same golf club
-            /*
-            if (currentCourses.get(1) != null) {
-                ArrayList<Course> newCurrentCourses = new ArrayList<Course>{};
-                newCurrentCourses.add(currentcourses.get(1));
-                newCurrentCourses.add(currentCourses.get(0));
-            }
-            */
+
+            // Change to alternate course at the same golf club (future)
+
             return true;
         }
+
+        // Move to next or previous hole
 
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
                                float velocityX, float velocityY) {
-            Log.i(TAG, "onFling: " + event1.toString() + event2.toString());
+
 
             if (event1.getX() < event2.getX()) {
                 // Swipe left (minus)
@@ -436,10 +421,10 @@ public class HoleActivity extends Activity implements
             for (Node node : nodes.getNodes()) {
                 MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(googleClient, node.getId(), path, message.getBytes()).await();
                 if (result.getStatus().isSuccess()) {
-                    Log.i(TAG, "Message: {" + message + "} sent to: " + node.getDisplayName());
+
                 } else {
                     // Log an error
-                    Log.i(TAG, "ERROR: failed to send Message");
+
                 }
             }
         }
@@ -457,7 +442,7 @@ public class HoleActivity extends Activity implements
      */
     private ArrayList<Course> getCurrentCourse(Location location) {
 
-        // Search for course(s) closest to current location
+        // Search for course closest to current location
 
         ArrayList<Course> bestCourses = new ArrayList<Course>();
         float bestYards = 20000;
@@ -473,24 +458,21 @@ public class HoleActivity extends Activity implements
                     bestYards = yards;
                     bestCourses.clear();
                     bestCourses.add(course);
-                    Log.i(TAG, "Found closer course. Yards: " + yards + ", Course: " + course.name);
+
                 }
                 // Some clubs have multiple courses
                 else if (yards == bestYards) {
                     bestCourses.add(course);
-                    Log.i(TAG, "Found club with multiple courses");
+
                 }
             }
 
 /*
-            if (course.name.equals("Emerald Hills Golf Course")) {
+            if (course.name.equals("Golf Course Name")) {
                 bestCourses.clear();
                 bestCourses.add(course);
-                Log.i(TAG, "Matched course: " + course.name);
             }
 */
-
-            Log.i(TAG, "Course name: " + course.name);
         }
 
         startup = false;
@@ -504,9 +486,8 @@ public class HoleActivity extends Activity implements
      */
 
     private void updateDisplay(Location location) {
-        float accuracy;
-        accuracy = location.getAccuracy();
-        Log.i(TAG, "Location accuracy on wearable:" + accuracy);
+        // float accuracy;
+        // accuracy = location.getAccuracy();
 
         float conv = (float) 1.0936133;
         float yards = location.distanceTo(currentHole.getLocation("front")) * conv;
@@ -527,6 +508,7 @@ public class HoleActivity extends Activity implements
 
     /**
      * Handle Sensor callbacks
+     * Used to dim the display when not in view (power saving)
      */
 
     private Handler displayHandler = new Handler();
@@ -538,10 +520,6 @@ public class HoleActivity extends Activity implements
 
     @Override
     public final void onSensorChanged(SensorEvent event) {
-        // The light sensor returns a single value.
-        // Many sensors return 3 values, one for each axis.
-        // float lux = event.values[0];
-        // Do something with this sensor value.
 
         // This timestep's delta rotation to be multiplied by the current rotation
         // after computing it from the gyro sample data.
@@ -556,8 +534,6 @@ public class HoleActivity extends Activity implements
             // Calculate the angular speed of the sample
             float omegaMagnitude = sqrt(axisX * axisX + axisY * axisY + axisZ * axisZ);
 
-            Log.i(TAG, "omegaMagnitude = " + omegaMagnitude);
-
             // Normalize the rotation vector if it's big enough to get the axis
             // (that is, EPSILON should represent your maximum allowable margin of error)
             //   if (omegaMagnitude > EPSILON) {
@@ -565,10 +541,9 @@ public class HoleActivity extends Activity implements
             axisY /= omegaMagnitude;
             axisZ /= omegaMagnitude;
 
-            Log.i(TAG, "axisX, axisY, axisZ: " + axisX + ", " + axisY + ", " + axisZ);
             //   }
             if ((axisZ < .7) ) {
-                Log.i(TAG, "Dim brightness");
+            // dim brightness
                 Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
                 //WindowManager.LayoutParams lp = this.getWindow().getAttributes();
                 //    lp.screenBrightness =0.0f;
@@ -576,33 +551,15 @@ public class HoleActivity extends Activity implements
                 requireRotate = 0;
 
             } else if ((axisZ > .9) && (requireRotate == 0))  {
-                Log.i(TAG, "Restore brightness");
+            // restore brightness
                 Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "255");
-
-                //    WindowManager.LayoutParams lp = this.getWindow().getAttributes();
-                //    lp.screenBrightness = (WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE);
 
                 // Start a handler to implement the maximum time for normal brightness
                 displayHandler.postDelayed(displayTimeout, 4000);
                 requireRotate = 1;
             }
-
-            // Integrate around this axis with the angular speed by the timestep
-            // in order to get a delta rotation from this sample over the timestep
-            // We will convert this axis-angle representation of the delta rotation
-            // into a quaternion before turning it into the rotation matrix.
-            float thetaOverTwo = omegaMagnitude * dT / 2.0f;
-            float sinThetaOverTwo = sin(thetaOverTwo);
-            float cosThetaOverTwo = cos(thetaOverTwo);
-            deltaRotationVector[0] = sinThetaOverTwo * axisX;
-            deltaRotationVector[1] = sinThetaOverTwo * axisY;
-            deltaRotationVector[2] = sinThetaOverTwo * axisZ;
-            deltaRotationVector[3] = cosThetaOverTwo;
         }
         timestamp = event.timestamp;
-        float[] deltaRotationMatrix = new float[9];
-        SensorManager.getRotationMatrixFromVector(deltaRotationMatrix, deltaRotationVector);
-
     }
 
     // Dim the display after a timeout

@@ -8,5 +8,6 @@
     <string name="back">Back</string>
     <string name="middle">Middle</string>
     <string name="front">Front</string>
+    <string name="dismiss_intro">Use long press to close.</string>
 
 </resources>
