@@ -381,169 +381,7 @@
 	    "thumbnailURL": "",
 	    "woeid": "2383238"
         },
-        {
-	    "address": "938 Wilmington Way",
-            "city": "Redwood City, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "9",
-	    "imageURL": "",
-            "name": "Emerald Hills Golf Course",
-            "id": "4003",
-            "info": "",
-            "latitude": "37.455118",
-            "longitude": "-122.265564",
-	    "phone": "(650) 368-7820",
-	    "isPublic": true,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2479714"
-        },
-        {
-	    "address": "500 Ludeman Lane",
-            "city": "Millbrae, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Green Hills Country Club",
-            "id": "4004",
-            "info": "",
-            "latitude": "37.605199",
-            "longitude": "-122.406439",
-	    "phone": "(650) 583-0882",
-	    "isPublic": false,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2451206"
-        },
-        {
-	    "address": "2000 Fairway Drive",
-            "city": "Half Moon Bay, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Half Moon Bay Golf Links",
-            "id": "4005",
-            "info": "",
-            "latitude": "37.435045",
-            "longitude": "-122.429441",
-	    "phone": "(650) 726-4438",
-	    "isPublic": true,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2416227"
-        },
-        {
-	    "address": "2401 E 3rd Ave.",
-            "city": "Foster City, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "9",
-	    "imageURL": "",
-            "name": "Mariners Point Golf Links",
-            "id": "4006",
-            "info": "",
-            "latitude": "37.572143",
-            "longitude": "-122.284575",
-	    "phone": "(650) 573-7888",
-	    "isPublic": true,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2406170"
-        },
-        {
-	    "address": "701 Madera Drive",
-            "city": "San Mateo, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Penisula Golf Course",
-            "id": "4007",
-            "info": "",
-            "latitude": "37.541816",
-            "longitude": "-122.320732",
-	    "phone": "(650) 638-2239",
-	    "isPublic": false,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2488142"
-        },
-        {
-	    "address": "2300 Woodside Road",
-            "city": "Woodside",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Menlo Country Club",
-            "id": "4008",
-            "info": "",
-            "latitude": "37.445025",
-            "longitude": "-122.240102",
-	    "phone": "(650) 366-9910",
-	    "isPublic": false,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2523694"
-        },
-        {
-	    "address": "1700 Coyote Point Drive",
-            "city": "San Mateo, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Poplar Creek Golf Course",
-            "id": "4009",
-            "info": "",
-            "latitude": "37.541816",
-            "longitude": "-122.320732",
-	    "phone": "(650) 522-4653",
-	    "isPublic": true,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2488142"
-        },
-        {
-	    "address": "2900 Sand Hill Road",
-            "city": "Menlo Park, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Sharon Heights Golf Course",
-            "id": "4010",
-            "info": "",
-            "latitude": "37.541816",
-            "longitude": "-122.320732",
-	    "phone": "(650) 854-6429",
-	    "isPublic": false,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2449435"
-        },
-        {
-	    "address": "269 Angelita Ave",
-            "city": "Pacifica, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",
-            "name": "Sharp Park Golf Course",
-            "id": "40011",
-            "info": "",
-            "latitude": "37.622571",
-            "longitude": "-122.484302",
-	    "phone": "",
-	    "isPublic": true,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2467340"
-        },
-        {
+   {
      	    "address": "938 Wilmington Way",
                  "city": "Redwood City, CA",
      	    "courseInfo": "",
@@ -725,7 +563,334 @@
      			  ]
      			}
      		  ]
-             }
+             },
+        {
+	    "address": "500 Ludeman Lane",
+            "city": "Millbrae, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Green Hills Country Club",
+            "id": "4004",
+            "info": "",
+            "latitude": "37.605199",
+            "longitude": "-122.406439",
+	    "phone": "(650) 583-0882",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2451206"
+        },
+        {
+	    "address": "2000 Fairway Drive",
+            "city": "Half Moon Bay, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Half Moon Bay Golf Links",
+            "id": "4005",
+            "info": "",
+            "latitude": "37.435045",
+            "longitude": "-122.429441",
+	    "phone": "(650) 726-4438",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2416227"
+        },
+        {
+	    "address": "2401 E 3rd Ave.",
+            "city": "Foster City, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "9",
+	    "imageURL": "",
+            "name": "Mariners Point Golf Links",
+            "id": "4006",
+            "info": "",
+            "latitude": "37.572143",
+            "longitude": "-122.284575",
+	    "phone": "(650) 573-7888",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2406170"
+        },
+        {
+	    "address": "701 Madera Drive",
+            "city": "San Mateo, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Penisula Golf Course",
+            "id": "4007",
+            "info": "",
+            "latitude": "37.541816",
+            "longitude": "-122.320732",
+	    "phone": "(650) 638-2239",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2488142"
+        },
+        {
+	    "address": "2300 Woodside Road",
+            "city": "Woodside",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Menlo Country Club",
+            "id": "4008",
+            "info": "",
+            "latitude": "37.445025",
+            "longitude": "-122.240102",
+	    "phone": "(650) 366-9910",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2523694"
+        },
+        {
+	    "address": "1700 Coyote Point Drive",
+            "city": "San Mateo, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Poplar Creek Golf Course",
+            "id": "4009",
+            "info": "",
+            "latitude": "37.541816",
+            "longitude": "-122.320732",
+	    "phone": "(650) 522-4653",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2488142"
+        },
+        {
+	    "address": "2900 Sand Hill Road",
+            "city": "Menlo Park, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Sharon Heights Golf Course",
+            "id": "4010",
+            "info": "",
+            "latitude": "37.541816",
+            "longitude": "-122.320732",
+	    "phone": "(650) 854-6429",
+	    "isPublic": false,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2449435"
+        },
+        {
+	    "address": "269 Angelita Ave",
+            "city": "Pacifica, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Sharp Park Golf Course",
+            "id": "40011",
+            "info": "",
+            "latitude": "37.622571",
+            "longitude": "-122.484302",
+	    "phone": "",
+	    "isPublic": true,
+	    "slope": "",
+	    "thumbnailURL": "",
+	    "woeid": "2467340"
+        },
+           {
+			"address": "400 N Saratoga Avenue",
+				 "city": "Santa Clara, CA",
+			"courseInfo": "",
+			"directions": "",
+			"holes": "9",
+			"imageURL": "",
+				 "name": "Pruneridge Golf Club",
+				 "id": "4012",
+				 "info": "",
+				 "latitude": "37.331600",
+				 "longitude": "-121.963856",
+			"phone": "(408) 899-8979",
+			"isPublic": true,
+			"slope": "",
+			"thumbnailURL": "",
+			"woeid": "2488836",
+			"caddy":
+			  [
+				{
+				"hole": "1",
+				"placement":
+				  [
+					{
+					"latitude": "37.452223",
+					"longitude": "-122.263155"
+					},
+					{
+					"latitude": "37.452198",
+					"longitude": "-122.263108"
+					},
+					{
+					"latitude": "37.452172",
+					"longitude": "-122.26306"
+					}
+				  ]
+				},
+				{
+				"hole": "2",
+				"placement":
+				  [
+					{
+					"latitude": "37.452329",
+					"longitude": "-122.265251"
+					},
+					{
+					"latitude": "37.452359",
+					"longitude": "-122.265307"
+					},
+					{
+					"latitude": "37.452383",
+					"longitude": "-122.265356"
+					}
+				  ]
+				},
+				{
+				"hole": "3",
+				"placement":
+				  [
+					{
+					"latitude": "37.453101",
+					"longitude": "-122.264007"
+					},
+					{
+					"latitude": "37.453079",
+					"longitude": "-122.26398"
+					},
+					{
+					"latitude": "37.453058",
+					"longitude": "-122.263943"
+					}
+				  ]
+				},
+				{
+				"hole": "4",
+				"placement":
+				  [
+					{
+					"latitude": "37.453356",
+					"longitude": "-122.265045"
+					},
+					{
+					"latitude": "37.453386",
+					"longitude": "-122.26502"
+					},
+					{
+					"latitude": "37.453428",
+					"longitude": "-122.265022"
+					}
+				  ]
+				},
+				{
+				"hole": "5",
+				"placement":
+				  [
+					{
+					"latitude": "37.453737",
+					"longitude": "-122.266425"
+					},
+					{
+					"latitude": "37.453729",
+					"longitude": "-122.266465"
+					},
+					{
+					"latitude": "37.45373",
+					"longitude": "-122.266501"
+					}
+				  ]
+				},
+				{
+				"hole": "6",
+				"placement":
+				  [
+					{
+					"latitude": "37.454916",
+					"longitude": "-122.266317"
+					},
+					{
+					"latitude": "37.454947",
+					"longitude": "-122.266301"
+					},
+					{
+					"latitude": "37.454977",
+					"longitude": "-122.26629"
+					}
+				  ]
+				},
+				{
+				"hole": "7",
+				"placement":
+				  [
+					{
+					"latitude": "37.455644",
+					"longitude": "-122.267046"
+					},
+					{
+					"latitude": "37.455662",
+					"longitude": "-122.267074"
+					},
+					{
+					"latitude": "37.455673",
+					"longitude": "-122.267101"
+					}
+				  ]
+				},
+				{
+				"hole": "8",
+				"placement":
+				  [
+					{
+					"latitude": "37.455673",
+					"longitude": "-122.267101"
+					},
+					{
+					"latitude": "37.455252",
+					"longitude": "-122.265885"
+					},
+					{
+					"latitude": "37.45523",
+					"longitude": "-122.265865"
+					}
+				  ]
+				},
+				{
+				"hole": "9",
+				"placement":
+				  [
+					{
+					"latitude": "37.45393",
+					"longitude": "-122.265655"
+					},
+					{
+					"latitude": "37.453896",
+					"longitude": "-122.265638"
+					},
+					{
+					"latitude": "37.453867",
+					"longitude": "-122.265627"
+					}
+				  ]
+				}
+			  ]
+			 }
         ]
     }
 }
