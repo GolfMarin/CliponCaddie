@@ -24,7 +24,8 @@
             android:textSize="40dp"
             android:gravity="center_horizontal"
             android:textColor="#ffffffff"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingTop="5dp" />
 
         <TextView
             android:id="@+id/back"
