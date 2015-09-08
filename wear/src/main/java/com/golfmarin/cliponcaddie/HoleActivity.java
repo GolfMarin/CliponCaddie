@@ -18,6 +18,7 @@ package com.golfmarin.cliponcaddie;
 */
 
 import android.app.Activity;
+import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,6 +35,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.DismissOverlayView;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
@@ -54,21 +56,23 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
+
+import java.io.IOException;
 import java.util.ArrayList;
-import static android.util.FloatMath.cos;
-import static android.util.FloatMath.sin;
-import static android.util.FloatMath.sqrt;
 
 /*
   This activity initializes with the closest course
   then displays distances from current location to the hole placements.
 */
 
-public class HoleActivity extends Activity implements
+public class HoleActivity extends WearableActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener,
-        SensorEventListener {
+        LocationListener
+         {
+
+    // Drop the sensor listener and use ambient enter and exit instead
+    // SensorEventListener
 
     private static final String TAG = "HoleActivity";
 
@@ -133,9 +137,12 @@ public class HoleActivity extends Activity implements
                 middleView = (TextView) stub.findViewById(R.id.middle);
                 frontView = (TextView) stub.findViewById(R.id.front);
 
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+         //       getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
         });
+
+        // Enable the ambient mode
+        setAmbientEnabled();
 
         // Initialize data model containing all golf courses
         DataModel dm = new DataModel(this);
@@ -153,10 +160,7 @@ public class HoleActivity extends Activity implements
         dismissOverlayView.setIntroText(R.string.dismiss_intro);
         dismissOverlayView.showIntroIfNecessary();
 
-        // Set up sensor listener
-        senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
 
         // Turn off auto brightness
         Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
@@ -199,7 +203,7 @@ public class HoleActivity extends Activity implements
     protected void onPause() {
         // Unregister listeners
         LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
-        senSensorManager.unregisterListener(this);
+//        senSensorManager.unregisterListener(this);
         super.onPause();
     }
 
@@ -210,7 +214,7 @@ public class HoleActivity extends Activity implements
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
 
         // Register the sensor manager
-        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_UI);
+//        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_UI);
     }
 
     /**
@@ -430,6 +434,66 @@ public class HoleActivity extends Activity implements
         }
     }
 
+     /******************************
+      * Ambient mode callbacks
+      * This replaces the earlier motion detection
+      *******************************/
+
+     @Override
+     public void onEnterAmbient(Bundle ambientDetails) {
+         super.onEnterAmbient(ambientDetails);
+         Log.v(TAG,"Entered Ambient.");
+         /*
+         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+         try {
+             wallpaperManager.setResource(R.raw.green_outline);
+             Log.v(TAG,"Wallpaper set.");
+         }
+         catch (IOException e) {
+             Log.v(TAG, "Wallpaper manger failed");
+         }
+         */
+         // Disable antialias for devices with low-bit ambient
+         holeView.getPaint().setAntiAlias(false);
+         frontView.getPaint().setAntiAlias(false);
+         middleView.getPaint().setAntiAlias(false);
+         backView.getPaint().setAntiAlias(false);
+     }
+
+      @Override
+      public void onExitAmbient() {
+          Log.v(TAG, "ExitedAmbient");
+          // Restore display
+          final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+          stub.invalidate();
+/*
+          WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+          try {
+              wallpaperManager.setResource(R.raw.greenback);
+              Log.v(TAG,"Wallpaper set.");
+          }
+          catch (IOException e) {
+              Log.v(TAG, "Wallpaper manger failed");
+          }
+
+*/
+          // Renable antialias for normal display
+          holeView.getPaint().setAntiAlias(true);
+          frontView.getPaint().setAntiAlias(true);
+          middleView.getPaint().setAntiAlias(true);
+          backView.getPaint().setAntiAlias(true);
+
+          super.onExitAmbient();
+      }
+
+         @Override
+         public void onUpdateAmbient() {
+             // Update hole distances using current location
+             Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
+             updateDisplay(currentLocation);
+             Log.v(TAG, "Distances updated");
+         }
+
     /*****************************
      * Course and hole methods
      ******************************/
@@ -507,9 +571,14 @@ public class HoleActivity extends Activity implements
     }
 
     /**
-     * Handle Sensor callbacks
+     * Handle Sensor callbacks OBSOLETE, switched to Always On
      * Used to dim the display when not in view (power saving)
-     */
+     *
+     *
+     // Set up sensor listener
+     senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+     senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+     senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
     private Handler displayHandler = new Handler();
 
@@ -532,7 +601,7 @@ public class HoleActivity extends Activity implements
             float axisZ = event.values[2];
 
             // Calculate the angular speed of the sample
-            float omegaMagnitude = sqrt(axisX * axisX + axisY * axisY + axisZ * axisZ);
+            float omegaMagnitude = (float) Math.sqrt(axisX * axisX + axisY * axisY + axisZ * axisZ);
 
             // Normalize the rotation vector if it's big enough to get the axis
             // (that is, EPSILON should represent your maximum allowable margin of error)
@@ -544,7 +613,7 @@ public class HoleActivity extends Activity implements
             //   }
             if ((axisZ < .7) ) {
             // dim brightness
-                Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
+            //    Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
                 //WindowManager.LayoutParams lp = this.getWindow().getAttributes();
                 //    lp.screenBrightness =0.0f;
                 //    lp.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_OFF;
@@ -552,7 +621,7 @@ public class HoleActivity extends Activity implements
 
             } else if ((axisZ > .9) && (requireRotate == 0))  {
             // restore brightness
-                Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "255");
+//                Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "255");
 
                 // Start a handler to implement the maximum time for normal brightness
                 displayHandler.postDelayed(displayTimeout, 4000);
@@ -570,10 +639,12 @@ public class HoleActivity extends Activity implements
     protected Runnable displayTimeout = new Runnable() {
         @Override
         public void run() {
-            Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
+//            Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
             requireRotate = 1;
         }
     };
+
+    */
 }
 
 
