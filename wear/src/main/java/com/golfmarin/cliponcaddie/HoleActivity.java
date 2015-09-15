@@ -137,7 +137,6 @@ public class HoleActivity extends WearableActivity implements
                 middleView = (TextView) stub.findViewById(R.id.middle);
                 frontView = (TextView) stub.findViewById(R.id.front);
 
-         //       getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
         });
 
@@ -490,8 +489,8 @@ public class HoleActivity extends WearableActivity implements
          public void onUpdateAmbient() {
              // Update hole distances using current location
              Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
+             Log.v(TAG, "Distances updating using" + currentLocation.toString());
              updateDisplay(currentLocation);
-             Log.v(TAG, "Distances updated");
          }
 
     /*****************************
@@ -553,98 +552,25 @@ public class HoleActivity extends WearableActivity implements
         // float accuracy;
         // accuracy = location.getAccuracy();
 
-        float conv = (float) 1.0936133;
-        float yards = location.distanceTo(currentHole.getLocation("front")) * conv;
-        String front = String.valueOf((int) yards);
-        frontView.setText(front);
+        if (location != null && currentHole != null) {
 
-        yards = location.distanceTo(currentHole.getLocation("middle")) * conv;
-        String middle = String.valueOf((int) yards);
-        middleView.setText(middle);
+            float conv = (float) 1.0936133;
+            float yards = location.distanceTo(currentHole.getLocation("front")) * conv;
+            String front = String.valueOf((int) yards);
+            frontView.setText(front);
 
-        yards = location.distanceTo(currentHole.getLocation("back")) * conv;
-        String back = String.valueOf((int) yards);
-        backView.setText(back);
+            yards = location.distanceTo(currentHole.getLocation("middle")) * conv;
+            String middle = String.valueOf((int) yards);
+            middleView.setText(middle);
 
-        // Keep the hole number display current
-        holeView.setText("Hole " + currentHole.holeNum);
-    }
+            yards = location.distanceTo(currentHole.getLocation("back")) * conv;
+            String back = String.valueOf((int) yards);
+            backView.setText(back);
 
-    /**
-     * Handle Sensor callbacks OBSOLETE, switched to Always On
-     * Used to dim the display when not in view (power saving)
-     *
-     *
-     // Set up sensor listener
-     senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-     senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-     senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
-    private Handler displayHandler = new Handler();
-
-    @Override
-    public final void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // Do something here if sensor accuracy changes.
-    }
-
-    @Override
-    public final void onSensorChanged(SensorEvent event) {
-
-        // This timestep's delta rotation to be multiplied by the current rotation
-        // after computing it from the gyro sample data.
-
-        if (timestamp != 0) {
-            final float dT = (event.timestamp - timestamp) * NS2S;
-            // Axis of the rotation sample, not normalized yet.
-            float axisX = event.values[0];
-            float axisY = event.values[1];
-            float axisZ = event.values[2];
-
-            // Calculate the angular speed of the sample
-            float omegaMagnitude = (float) Math.sqrt(axisX * axisX + axisY * axisY + axisZ * axisZ);
-
-            // Normalize the rotation vector if it's big enough to get the axis
-            // (that is, EPSILON should represent your maximum allowable margin of error)
-            //   if (omegaMagnitude > EPSILON) {
-            axisX /= omegaMagnitude;
-            axisY /= omegaMagnitude;
-            axisZ /= omegaMagnitude;
-
-            //   }
-            if ((axisZ < .7) ) {
-            // dim brightness
-            //    Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
-                //WindowManager.LayoutParams lp = this.getWindow().getAttributes();
-                //    lp.screenBrightness =0.0f;
-                //    lp.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_OFF;
-                requireRotate = 0;
-
-            } else if ((axisZ > .9) && (requireRotate == 0))  {
-            // restore brightness
-//                Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "255");
-
-                // Start a handler to implement the maximum time for normal brightness
-                displayHandler.postDelayed(displayTimeout, 4000);
-                requireRotate = 1;
-            }
+            // Keep the hole number display current
+            holeView.setText("Hole " + currentHole.holeNum);
         }
-        timestamp = event.timestamp;
     }
-
-    // Dim the display after a timeout
-    // Set flag that requires wrist rotation to restore brightness
-
-    int requireRotate = 0;
-
-    protected Runnable displayTimeout = new Runnable() {
-        @Override
-        public void run() {
-//            Settings.System.putString(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, "0");
-            requireRotate = 1;
-        }
-    };
-
-    */
 }
 
 

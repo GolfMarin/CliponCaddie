@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.golfmarin.cliponcaddie"
     android:versionCode="1"
-    android:versionName="1.1">
+    android:versionName="1.2">
 
     <uses-feature android:name="android.hardware.type.watch" />
 
@@ -11,8 +11,6 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
         android:allowBackup="true"
