@@ -194,7 +194,8 @@ public class HoleActivity extends WearableActivity implements
             googleClient.disconnect();
         }
         // Must be done to manage selection of the current golf course
-        startup = true;
+        Log.v(TAG, "onStop executed, and Startup is: " + startup);
+//        startup = true;
         super.onStop();
     }
 
