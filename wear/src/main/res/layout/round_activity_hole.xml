@@ -15,6 +15,15 @@
         android:layout_alignParentEnd="false"
         android:background="@drawable/greenback_rnd">
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:indeterminate="true"
+            android:layout_gravity="center_horizontal" />
+
         <TextView
             android:id="@+id/hole"
             android:layout_width="match_parent"

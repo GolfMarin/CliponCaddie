@@ -43,6 +43,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -87,6 +88,7 @@ public class HoleActivity extends WearableActivity implements
     private TextView backView;
     private TextView middleView;
     private TextView frontView;
+    private ProgressBar progressView;
 
     private DismissOverlayView dismissOverlayView;
 
@@ -136,6 +138,7 @@ public class HoleActivity extends WearableActivity implements
                 backView = (TextView) stub.findViewById(R.id.back);
                 middleView = (TextView) stub.findViewById(R.id.middle);
                 frontView = (TextView) stub.findViewById(R.id.front);
+                progressView = (ProgressBar) stub.findViewById(R.id.progress_bar);
 
             }
         });
@@ -144,6 +147,7 @@ public class HoleActivity extends WearableActivity implements
         setAmbientEnabled();
 
         // Initialize data model containing all golf courses
+
         DataModel dm = new DataModel(this);
         allCourses = dm.getCourses();
 
@@ -310,7 +314,7 @@ public class HoleActivity extends WearableActivity implements
     @Override
     public void onLocationChanged(Location location) {
         // Find closest course, if just starting up and location is valid
-        if (((startup == true) && location != null)) {
+        if (startup && (location != null)) {
             currentCourse = (getCurrentCourse(location)).get(0);
             Log.i(TAG, "Current course: " + currentCourse.name);
             if (currentCourse == null) return;
@@ -319,6 +323,8 @@ public class HoleActivity extends WearableActivity implements
                 allHoles = currentCourse.holeList;
                 currentHoleNum = 1;
                 currentHole = allHoles.get(0);
+                progressView.setVisibility(View.GONE);
+                holeView.setText("Hole");
             }
         }
         // Refresh the distances to hole placements
@@ -387,48 +393,48 @@ public class HoleActivity extends WearableActivity implements
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
                                float velocityX, float velocityY) {
-
-
-            if (event1.getX() < event2.getX()) {
-                // Swipe left (minus)
-                new SendToDataLayerThread("/swipe", "minus").start();
-                if (currentHoleNum > 1) {
-                    currentHoleNum--;
-                    currentHole = allHoles.get(currentHoleNum - 1);
+            if (!startup) {
+                if (event1.getX() < event2.getX()) {
+                    // Swipe left (minus)
+                    new SendToDataLayerThread("/swipe", "minus").start();
+                    if (currentHoleNum > 1) {
+                        currentHoleNum--;
+                        currentHole = allHoles.get(currentHoleNum - 1);
+                    }
+                } else {
+                    // Swipe right (plus)
+                    new SendToDataLayerThread("/swipe", "plus").start();
+                    if (currentHoleNum < allHoles.size()) {
+                        currentHoleNum++;
+                        currentHole = allHoles.get(currentHoleNum - 1);
+                    }
                 }
-            } else {
-                // Swipe right (plus)
-                new SendToDataLayerThread("/swipe", "plus").start();
-                if (currentHoleNum < allHoles.size()) {
-                    currentHoleNum++;
-                    currentHole = allHoles.get(currentHoleNum - 1);
-                }
+                updateDisplay(LocationServices.FusedLocationApi.getLastLocation(googleClient));
             }
-            updateDisplay(LocationServices.FusedLocationApi.getLastLocation(googleClient));
             return true;
         }
-    }
 
 
-    class SendToDataLayerThread extends Thread {
-        String path;
-        String message;
+        class SendToDataLayerThread extends Thread {
+            String path;
+            String message;
 
-        // Constructor to send a message to the data layer
-        SendToDataLayerThread(String p, String msg) {
-            path = p;
-            message = msg;
-        }
+            // Constructor to send a message to the data layer
+            SendToDataLayerThread(String p, String msg) {
+                path = p;
+                message = msg;
+            }
 
-        public void run() {
-            NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(googleClient).await();
-            for (Node node : nodes.getNodes()) {
-                MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(googleClient, node.getId(), path, message.getBytes()).await();
-                if (result.getStatus().isSuccess()) {
+            public void run() {
+                NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(googleClient).await();
+                for (Node node : nodes.getNodes()) {
+                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(googleClient, node.getId(), path, message.getBytes()).await();
+                    if (result.getStatus().isSuccess()) {
 
-                } else {
-                    // Log an error
+                    } else {
+                        // Log an error
 
+                    }
                 }
             }
         }
