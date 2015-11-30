@@ -123,7 +123,7 @@ public class JsonParser {
 				course.directions = currentObject.getString("directions");
 				course.latitude = currentObject.getDouble("latitude");
 				course.longitude = currentObject.getDouble("longitude");
-				course.id = currentObject.getString("id");
+			//	course.id = currentObject.getString("id");
 				course.woeid = currentObject.getString("woeid");
 				course.imageURL = currentObject.getString("imageURL");
 				course.thumbnailURL = currentObject.getString("thumbnailURL");
