@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;//
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -49,9 +50,14 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.ResultCallbacks;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.wearable.CapabilityApi;
+import com.google.android.gms.wearable.CapabilityInfo;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
@@ -60,6 +66,9 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /*
   This activity initializes with the closest course
@@ -147,7 +156,6 @@ public class HoleActivity extends WearableActivity implements
         setAmbientEnabled();
 
         // Initialize data model containing all golf courses
-
         DataModel dm = new DataModel(this);
         allCourses = dm.getCourses();
 
@@ -236,9 +244,37 @@ public class HoleActivity extends WearableActivity implements
     @Override
     public void onConnected(Bundle connectionHint) {
 
+        // First check the wearable for onboard GPS
+        boolean gpsPresent = getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
+
+        Log.v(TAG, "Local gps present: " + gpsPresent);
+/*
+        if (!gpsPresent){
+            // Look for the GPS capability ***too soon for this feature***
+
+            Wearable.CapabilityApi.getAllCapabilities(googleClient,CapabilityApi.FILTER_REACHABLE)
+                    .setResultCallback(new ResultCallback<CapabilityApi.GetAllCapabilitiesResult>() {
+                        @Override
+                        public void onResult(CapabilityApi.GetAllCapabilitiesResult getAllCapabilitiesResult) {
+                            Map<String, CapabilityInfo> capabilities = getAllCapabilitiesResult.getAllCapabilities();
+
+                         Iterator it = capabilities.entrySet().iterator();
+                            while(it.hasNext()){
+                                Map.Entry pair = (Map.Entry)it.next();
+                                String key = pair.getKey().toString();
+                                String value = pair.getValue().toString();
+                                Log.v(TAG, "Capability: " + key + ", " + value);
+                            }
+                        }
+                    });
+
+        }
+*/
         // Register for location services
 
         // Create the LocationRequest object
+
+
         LocationRequest locationRequest = LocationRequest.create();
         // Use high accuracy
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -313,22 +349,25 @@ public class HoleActivity extends WearableActivity implements
 
     @Override
     public void onLocationChanged(Location location) {
-        // Find closest course, if just starting up and location is valid
-        if (startup && (location != null)) {
-            currentCourse = (getCurrentCourse(location)).get(0);
-            Log.i(TAG, "Current course: " + currentCourse.name);
-            if (currentCourse == null) return;
-            else {
-                startup = false;
-                allHoles = currentCourse.holeList;
-                currentHoleNum = 1;
-                currentHole = allHoles.get(0);
-                progressView.setVisibility(View.GONE);
-                holeView.setText("Hole");
-            }
-        }
-        // Refresh the distances to hole placements
+
+        // Wait for a usable location
         if ((location != null) && (location.getAccuracy() < 25.0) && (location.getAccuracy() > 0.0)) {
+
+            // Find closest course, if just starting up
+            if (startup) {
+                currentCourse = (getCurrentCourse(location)).get(0);
+                Log.i(TAG, "Current course: " + currentCourse.name);
+                if (currentCourse == null) return;
+                else {
+                    startup = false;
+                    allHoles = currentCourse.holeList;
+                    currentHoleNum = 1;
+                    currentHole = allHoles.get(0);
+                    progressView.setVisibility(View.GONE);
+                    holeView.setText("Hole");
+                }
+            }
+            // Refresh the distances to hole placements§
             updateDisplay(location);
         }
     }
