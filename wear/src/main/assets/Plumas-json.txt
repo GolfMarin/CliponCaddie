@@ -1,0 +1,351 @@
+{ "golfCourses": {
+    "golfCourse": [
+        {	
+	    "address": "402 Poplar Valley Rd",
+        "city": "Graeagle, CA",
+	    "courseInfo": "",
+	    "directions": "",
+	    "holes": "18",
+	    "imageURL": "",
+            "name": "Pumas Pines golf Resort",
+            "id": "2000",
+            "info": "",
+            "latitude": "39.793193",
+            "longitude": "-120.653828",
+	    "phone": "530.836.1420",
+	    "isPublic": true,
+	    "slope": "",
+        "thumbnailURL": "",
+        "woeid": "2412615",
+        "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.798242",
+			    "longitude": "-120.656440"
+			    },
+			    {
+			    "latitude": "39.798294",
+			    "longitude": "-120.656559"
+			    },
+			    {
+			    "latitude": "39.798359",
+			    "longitude": "-120.656643"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.796692",
+			    "longitude": "-122.658013"
+			    },
+			    {
+			    "latitude": "39.796667",
+			    "longitude": "-120.653620"
+			    },
+			    {
+			    "latitude": "39.796648",
+			    "longitude": "-120.653517"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.796079",
+			    "longitude": "-120.652261"
+			    },
+			    {
+			    "latitude": "39.796019",
+			    "longitude": "-120.652183"
+			    },
+			    {
+			    "latitude": "39.795943",
+			    "longitude": "-120.652169"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.797256",
+			    "longitude": "-120.648000"
+			    },
+			    {
+			    "latitude": "39.797230",
+			    "longitude": "-120.647884"
+			    },
+			    {
+			    "latitude": "39.797209",
+			    "longitude": "-120.647805"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.793699",
+			    "longitude": "-120.647499"
+			    },
+			    {
+			    "latitude": "39.793643",
+			    "longitude": "-120.647431"
+			    },
+			    {
+			    "latitude": "39.793589",
+			    "longitude": "-120.647375"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.792551",
+			    "longitude": "-120.649839"
+			    },
+			    {
+			    "latitude": "39.792620",
+			    "longitude": "-120.649872"
+			    },
+			    {
+			    "latitude": "39.792686",
+			    "longitude": "-120.649916"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.793353",
+			    "longitude": "-120.648687"
+			    },
+			    {
+			    "latitude": "39.793308",
+			    "longitude": "-120.648647"
+			    },
+			    {
+			    "latitude": "39.793318",
+			    "longitude": "-120.648571"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.795120",
+			    "longitude": "-120.651220"
+			    },
+			    {
+			    "latitude": "39.795188",
+			    "longitude": "-120.651314"
+			    },
+			    {
+			    "latitude": "39.795289",
+			    "longitude": "-120.651340"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.794085",
+			    "longitude": "-120.654672"
+			    },
+			    {
+			    "latitude": "39.794068",
+			    "longitude": "-120.654724"
+			    },
+			    {
+			    "latitude": "39.794035",
+			    "longitude": "-120.654768"
+			    }
+			  ]
+			},
+			{
+			"hole": "10",
+			"placement":
+			  [
+			  	{
+			    "latitude": "39.791257",
+			    "longitude": "-120.654525"
+			    },
+			    {
+			    "latitude": "39.791210",
+			    "longitude": "-120.654479"
+			    },
+			    {
+			    "latitude": "39.791149",
+			    "longitude": "-120.654488"
+			    }
+			  ]
+			},
+			{
+			"hole": "11",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.792243",
+			    "longitude": "-120.654069"
+			    },
+			    {
+			    "latitude": "39.792322",
+			    "longitude": "-120.654087"
+			    },
+			    {
+			    "latitude": "39.792384",
+			    "longitude": "-120.654105"
+			    }
+			  ]
+			},
+			{
+			"hole": "12",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.790440",
+			    "longitude": "-120.652271"
+			    },
+			    {
+			    "latitude": "39.790373",
+			    "longitude": "-120.652250"
+			    },
+			    {
+			    "latitude": "39.790316",
+			    "longitude": "-120.652255"
+			    }
+			  ]
+			},
+			{
+			"hole": "13",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.785465",
+			    "longitude": "-120.650524"
+			    },
+			    {
+			    "latitude": "39.785404",
+			    "longitude": "-120.650527"
+			    },
+			    {
+			    "latitude": "39.785353",
+			    "longitude": "-120.650522"
+			    }
+			  ]
+			},
+			{
+			"hole": "14",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.785056,",
+			    "longitude": "-120.646302"
+			    },
+			    {
+			    "latitude": "39.785015",
+			    "longitude": "-120.646224"
+			    },
+			    {
+			    "latitude": "39.784966",
+			    "longitude": "-120.646257"
+			    }
+			  ]
+			},
+			{
+			"hole": "15",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.786528",
+			    "longitude": "-120.646117"
+			    },
+			    {
+			    "latitude": "39.786581",
+			    "longitude": "-120.646115"
+			    },
+			    {
+			    "latitude": "39.786622",
+			    "longitude": "-120.646138"
+			    }
+			  ]
+			},
+			{
+			"hole": "16",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.785970",
+			    "longitude": "-120.649122"
+			    },
+			    {
+			    "latitude": "39.785922",
+			    "longitude": "-120.649105"
+			    },
+			    {
+			    "latitude": "39.785876",
+			    "longitude": "-120.649084"
+			    }
+			  ]
+			},
+			{
+			"hole": "17",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.788786",
+			    "longitude": "-120.651240"
+			    },
+			    {
+			    "latitude": "39.788821",
+			    "longitude": "-120.651309"
+			    },
+			    {
+			    "latitude": "39.788859",
+			    "longitude": "-120.651369"
+			    }
+			  ]
+			},
+			{
+			"hole": "18",
+			"placement":
+			  [
+			    {
+			    "latitude": "39.793309",
+			    "longitude": "-120.654123"
+			    },
+			    {
+			    "latitude": "39.793353",
+			    "longitude": "-120.654204"
+			    },
+			    {
+			    "latitude": "39.793392",
+			    "longitude": "-120.654221"
+			    }
+			  ]
+			}
+		    ]
+    
+        }
+    ]
+}
+}
