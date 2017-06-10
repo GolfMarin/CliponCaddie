@@ -37,6 +37,7 @@ import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.wearable.activity.WearableActivity;
+import android.support.wearable.view.BoxInsetLayout;
 import android.support.wearable.view.DismissOverlayView;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
@@ -69,6 +70,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.Date;
+import java.util.Calendar;
+
+import static android.media.CamcorderProfile.get;
+import static java.lang.Integer.valueOf;
 
 /*
   This activity initializes with the closest course
@@ -78,8 +84,8 @@ import java.util.concurrent.TimeUnit;
 public class HoleActivity extends WearableActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener
-         {
+        LocationListener{
+
 
     // Drop the sensor listener and use ambient enter and exit instead
     // SensorEventListener
@@ -99,13 +105,9 @@ public class HoleActivity extends WearableActivity implements
     private TextView frontView;
     private ProgressBar progressView;
 
-    private DismissOverlayView dismissOverlayView;
-
     private GestureDetectorCompat gestureDetector;
 
     private GoogleApiClient googleClient;
-
-
 
     // Sensor globals
     private boolean mIsInResolution;
@@ -129,35 +131,40 @@ public class HoleActivity extends WearableActivity implements
      */
     private ArrayList<Course> allCourses;
     private Course currentCourse;
+    private Course nearbyCourse;
     private ArrayList<Hole> allHoles;
     private Integer currentHoleNum;
     private Hole currentHole;
     private Boolean startup = true;
+    private BoxInsetLayout mContainerView;
+
+   private Integer onStoppedDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_hole);
-        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
-        stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
-            @Override
-            public void onLayoutInflated(WatchViewStub stub) {
-                holeView = (TextView) stub.findViewById(R.id.hole);
-                backView = (TextView) stub.findViewById(R.id.back);
-                middleView = (TextView) stub.findViewById(R.id.middle);
-                frontView = (TextView) stub.findViewById(R.id.front);
-                progressView = (ProgressBar) stub.findViewById(R.id.progress_bar);
+        setAmbientEnabled();
+        mContainerView = (BoxInsetLayout) findViewById(R.id.watch_view_stub);
 
-            }
-        });
+
+        holeView = (TextView) mContainerView.findViewById(R.id.hole);
+        backView = (TextView) mContainerView.findViewById(R.id.back);
+        middleView = (TextView) mContainerView.findViewById(R.id.middle);
+        frontView = (TextView) mContainerView.findViewById(R.id.front);
+        progressView = (ProgressBar) mContainerView.findViewById(R.id.progress_bar);
+
+
 
         // Enable the ambient mode
-        setAmbientEnabled();
+         setAmbientEnabled();
+
 
         // Initialize data model containing all golf courses
         DataModel dm = new DataModel(this);
         allCourses = dm.getCourses();
+        Log.v(TAG, "All courses: " + allCourses);
 
         // Setup a local broadcast receiver
         messageFilter = new IntentFilter(Intent.ACTION_SEND);
@@ -166,15 +173,48 @@ public class HoleActivity extends WearableActivity implements
         // Set up gesture detector
         gestureDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
-        // Set up dismiss overlay view
-        dismissOverlayView = (DismissOverlayView) findViewById(R.id.dismiss_overlay);
-        dismissOverlayView.setIntroText(R.string.dismiss_intro);
-        dismissOverlayView.showIntroIfNecessary();
-
-
-
         // Turn off auto brightness
         Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+
+        // Recreate previously destroyed global variables, if present
+        // and not out of date
+        if (savedInstanceState != null) {
+            //Get date of saved instance (day of year)
+            Calendar calendar = Calendar.getInstance();
+            Integer dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
+            Integer dayOfYearSaved = savedInstanceState.getInt("daysaved");
+
+            // If today, restore current member valuesstate
+            if (dayOfYear.equals(dayOfYearSaved)) {
+                startup = savedInstanceState.getBoolean("startup");
+                currentCourse = savedInstanceState.getParcelable("currentcourse");
+                allHoles = savedInstanceState.getParcelableArrayList("allholes");
+                currentHole = savedInstanceState.getParcelable("currenthole");
+                currentHoleNum = savedInstanceState.getInt("currentholenum");
+                nearbyCourse = savedInstanceState.getParcelable("nearbycourse");
+
+                Log.v(TAG, "Restored current course members during recreation of app");
+                Log.v(TAG, "Current day of year: " + dayOfYear);
+                Log.v(TAG, "Day of year when saved: " + dayOfYearSaved);
+                if (startup != null) Log.v(TAG, "startup: " + startup);
+                if (currentCourse != null) Log.v(TAG, "currentCourse: " + currentCourse.name);
+                if (allHoles != null) Log.v(TAG, "allHoles array is present");
+                if (currentHoleNum != null) Log.v(TAG, "currentHoleNum: " + currentHoleNum);
+                if (currentHole != null) Log.v(TAG, "currentHole Middle: " + currentHole.middle);
+                if (nearbyCourse != null) Log.v(TAG, "nearbyCourse: " + nearbyCourse.name);
+            }
+
+        } else {
+            // Otherwise, initialize members with default values for the new instance
+            // Set startup state
+            startup = true;
+            currentCourse = null;
+            allHoles = null;
+            currentHole = null;
+            currentHoleNum = 1;
+            nearbyCourse = null;
+            Log.v(TAG, "Set startup to true and current course variables to null on creation/recreation of app");
+        }
     }
 
     // *************************
@@ -205,17 +245,32 @@ public class HoleActivity extends WearableActivity implements
         if ((googleClient != null) && googleClient.isConnected()) {
             googleClient.disconnect();
         }
-        // Must be done to manage selection of the current golf course
-        Log.v(TAG, "onStop executed, and Startup is: " + startup);
-//        startup = true;
+        // Manage selection of the current golf course after a stop
+        Calendar calendar = Calendar.getInstance();
+        onStoppedDay = calendar.get(Calendar.DAY_OF_YEAR);
+        Log.v(TAG, "onStop executed on day: " + onStoppedDay);
+        startup = true;
         super.onStop();
+    }
+
+   @Override
+   protected void onRestart() {
+       super.onRestart();
+
+       Calendar calendar = Calendar.getInstance();
+       Integer onRestartDay = calendar.get(Calendar.DAY_OF_YEAR);
+       Log.v(TAG, "onRestart executed on day: " + onRestartDay);
+       Log.v(TAG, "onStop was executed on day: " + onStoppedDay);
+
+       // Force startup state to true
+       startup = true;
+       updateGpsView(startup);
     }
 
     @Override
     protected void onPause() {
         // Unregister listeners
         LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
-//        senSensorManager.unregisterListener(this);
         super.onPause();
     }
 
@@ -224,18 +279,39 @@ public class HoleActivity extends WearableActivity implements
         // Register a local broadcast receiver, defined below.
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
-
-        // Register the sensor manager
-//        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        // Force startup state to true
+        startup = true;
+        updateGpsView(startup);
     }
 
     /**
-     * Save the resolution state.
+     * Save the instance state.
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(KEY_IN_RESOLUTION, mIsInResolution);
+
+        outState.putBoolean("startup",startup);
+        outState.putParcelable("currentcourse",currentCourse);
+        outState.putParcelableArrayList("allholes",allHoles);
+        outState.putInt("currentholenum",currentHoleNum);
+        outState.putParcelable("currenthole",currentHole);
+        outState.putParcelable("nearbycourse", nearbyCourse);
+
+        Calendar calendar = Calendar.getInstance();
+        int dayOfYearSaved = calendar.get(Calendar.DAY_OF_YEAR);
+        outState.putInt("daysaved",dayOfYearSaved);
+
+        Log.v(TAG, "Save instance state variables");
+        Log.v(TAG, "dayOfYearSaved: " + dayOfYearSaved);
+        if(startup != null) Log.v(TAG, "startup: " + startup);
+
+        if (currentCourse != null) {Log.v(TAG, "currentCourse: " + currentCourse.name);}
+        if (allHoles != null) Log.v(TAG, "allHoles array is present");
+        if (currentHoleNum != null) Log.v(TAG, "currentHoleNum: " + currentHoleNum);
+        if (currentHole != null) Log.v(TAG, "currentHole Middle: " + currentHole.middle);
+        if (nearbyCourse != null) Log.v(TAG, "nearbyCourse: " + nearbyCourse.name);
     }
 
     // ******************************
@@ -246,47 +322,31 @@ public class HoleActivity extends WearableActivity implements
 
         // First check the wearable for onboard GPS
         boolean gpsPresent = getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
-
-        Log.v(TAG, "Local gps present: " + gpsPresent);
-/*
-        if (!gpsPresent){
-            // Look for the GPS capability ***too soon for this feature***
-
-            Wearable.CapabilityApi.getAllCapabilities(googleClient,CapabilityApi.FILTER_REACHABLE)
-                    .setResultCallback(new ResultCallback<CapabilityApi.GetAllCapabilitiesResult>() {
-                        @Override
-                        public void onResult(CapabilityApi.GetAllCapabilitiesResult getAllCapabilitiesResult) {
-                            Map<String, CapabilityInfo> capabilities = getAllCapabilitiesResult.getAllCapabilities();
-
-                         Iterator it = capabilities.entrySet().iterator();
-                            while(it.hasNext()){
-                                Map.Entry pair = (Map.Entry)it.next();
-                                String key = pair.getKey().toString();
-                                String value = pair.getValue().toString();
-                                Log.v(TAG, "Capability: " + key + ", " + value);
-                            }
-                        }
-                    });
-
+        if (!gpsPresent) {
+            // TODO check for GPS enabled on handheld
         }
-*/
+
         // Register for location services
-
-        // Create the LocationRequest object
-
 
         LocationRequest locationRequest = LocationRequest.create();
         // Use high accuracy
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         // Set the update interval to 2 seconds
-        locationRequest.setInterval(2);
+        locationRequest.setInterval(2000);
         // Set the fastest update interval to 2 seconds
-        locationRequest.setFastestInterval(2);
-        // Set the minimum displacement
+        locationRequest.setFastestInterval(2000);
+        // Set the minimum displacement to 2 meters
         locationRequest.setSmallestDisplacement(2);
 
         // Register listener using the LocationRequest object
         LocationServices.FusedLocationApi.requestLocationUpdates(googleClient, locationRequest, this);
+
+        // Get the last location and invoke the golf course setup procedure
+        onLocationChanged(LocationServices.FusedLocationApi.getLastLocation(googleClient));
+
+        // Drop the progress view
+        // progressView.setVisibility(View.GONE);
+        // Log.v("HoleActivity", "Progress View set to Gone");
     }
 
     @Override
@@ -351,25 +411,29 @@ public class HoleActivity extends WearableActivity implements
     public void onLocationChanged(Location location) {
 
         // Wait for a usable location
-        if ((location != null) && (location.getAccuracy() < 25.0) && (location.getAccuracy() > 0.0)) {
-
+        if ((location != null) &&
+                (location.getAccuracy() < 25.0) &&
+                (location.getAccuracy() > 0.0)) {
             // Find closest course, if just starting up
+            Log.v(TAG, "Distances updating using " + location.toString());
             if (startup) {
-                currentCourse = (getCurrentCourse(location)).get(0);
-                Log.i(TAG, "Current course: " + currentCourse.name);
-                if (currentCourse == null) return;
-                else {
-                    startup = false;
+                // Do a search for the closest course and verify that one was found
+                ArrayList<Course>  bestCourses  = new ArrayList<Course>();
+                bestCourses = getCurrentCourse(location);
+
+                if (bestCourses.size() > 0) {
+                    currentCourse = bestCourses.get(0);
+                    if (bestCourses.size() > 1)
+                        nearbyCourse = bestCourses.get(1);
+
                     allHoles = currentCourse.holeList;
-                    currentHoleNum = 1;
-                    currentHole = allHoles.get(0);
-                    progressView.setVisibility(View.GONE);
-                    holeView.setText("Hole");
+                    currentHole = allHoles.get(currentHoleNum - 1);
+                    startup = false;
                 }
             }
-            // Refresh the distances to hole placements§
-            updateDisplay(location);
         }
+        // Refresh the distances to hole placements
+        if (!startup) updateDisplay(location);
     }
 
     // Local broadcast receiver callback to receive messages
@@ -379,12 +443,7 @@ public class HoleActivity extends WearableActivity implements
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            if (intent.getAction().equals(Intent.ACTION_SEND)) {
-
-                Bundle b = intent.getBundleExtra("distances");
-                if (b != null) {
-                }
-            }
+            //      TODO Future communications with a handheld
         }
     }
 
@@ -411,14 +470,6 @@ public class HoleActivity extends WearableActivity implements
             return true;
         }
 
-        // Display dismiss overlay to close this app
-
-        @Override
-        public void onLongPress(MotionEvent event) {
-
-            dismissOverlayView.show();
-        }
-
         @Override
         public boolean onDoubleTap(MotionEvent event) {
 
@@ -432,17 +483,19 @@ public class HoleActivity extends WearableActivity implements
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
                                float velocityX, float velocityY) {
-            if (!startup) {
+            if (!startup && currentHoleNum != null) {
                 if (event1.getX() < event2.getX()) {
+                    // Future, send swipe to handheld
                     // Swipe left (minus)
-                    new SendToDataLayerThread("/swipe", "minus").start();
+         //           new SendToDataLayerThread("/swipe", "minus").start();
                     if (currentHoleNum > 1) {
                         currentHoleNum--;
                         currentHole = allHoles.get(currentHoleNum - 1);
                     }
                 } else {
+                    // Future, send swipe t0 handheld
                     // Swipe right (plus)
-                    new SendToDataLayerThread("/swipe", "plus").start();
+         //           new SendToDataLayerThread("/swipe", "plus").start();
                     if (currentHoleNum < allHoles.size()) {
                         currentHoleNum++;
                         currentHole = allHoles.get(currentHoleNum - 1);
@@ -453,7 +506,7 @@ public class HoleActivity extends WearableActivity implements
             return true;
         }
 
-
+        // TODO Future communications with handheld
         class SendToDataLayerThread extends Thread {
             String path;
             String message;
@@ -488,16 +541,7 @@ public class HoleActivity extends WearableActivity implements
      public void onEnterAmbient(Bundle ambientDetails) {
          super.onEnterAmbient(ambientDetails);
          Log.v(TAG,"Entered Ambient.");
-         /*
-         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-         try {
-             wallpaperManager.setResource(R.raw.green_outline);
-             Log.v(TAG,"Wallpaper set.");
-         }
-         catch (IOException e) {
-             Log.v(TAG, "Wallpaper manger failed");
-         }
-         */
+
          // Disable antialias for devices with low-bit ambient
          holeView.getPaint().setAntiAlias(false);
          frontView.getPaint().setAntiAlias(false);
@@ -509,19 +553,9 @@ public class HoleActivity extends WearableActivity implements
       public void onExitAmbient() {
           Log.v(TAG, "ExitedAmbient");
           // Restore display
-          final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
-          stub.invalidate();
-/*
-          WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-          try {
-              wallpaperManager.setResource(R.raw.greenback);
-              Log.v(TAG,"Wallpaper set.");
-          }
-          catch (IOException e) {
-              Log.v(TAG, "Wallpaper manger failed");
-          }
+       //   final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+       //   stub.invalidate();
 
-*/
           // Renable antialias for normal display
           holeView.getPaint().setAntiAlias(true);
           frontView.getPaint().setAntiAlias(true);
@@ -534,8 +568,8 @@ public class HoleActivity extends WearableActivity implements
          @Override
          public void onUpdateAmbient() {
              // Update hole distances using current location
+             super.onUpdateAmbient();
              Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
-             Log.v(TAG, "Distances updating using" + currentLocation.toString());
              updateDisplay(currentLocation);
          }
 
@@ -552,41 +586,38 @@ public class HoleActivity extends WearableActivity implements
     private ArrayList<Course> getCurrentCourse(Location location) {
 
         // Search for course closest to current location
+        Log.v(TAG, "getCurrentCourse started.");
 
         ArrayList<Course> bestCourses = new ArrayList<Course>();
         float bestYards = 20000;
         float conv = (float) 1.0936133;
 
+        //Search through all courses and find the two closest
         for (Course course : allCourses) {
-
             // Not all courses have hole locations, skip those
-
             if (course.holeList != null) {
+                Log.v(TAG, "Course: " + course);
                 float yards = location.distanceTo(course.getLocation()) * conv;
                 if (yards < bestYards) {
                     bestYards = yards;
-                    bestCourses.clear();
-                    bestCourses.add(course);
+                    // If this is the first course with holes, just add it to bestCourses
+                    if (bestCourses.isEmpty())
+                        bestCourses.add(course);
 
-                }
-                // Some clubs have multiple courses
-                else if (yards == bestYards) {
-                    bestCourses.add(course);
-
+                        // Otherwise, shift the previous best from bestCourses index 0 to 1
+                    else {
+                        bestCourses.add(1, bestCourses.get(0));
+                        bestCourses.add((0), course);
+                    }
                 }
             }
-
-/*
-            if (course.name.equals("Golf Course Name")) {
-                bestCourses.clear();
-                bestCourses.add(course);
-            }
-*/
         }
 
-        startup = false;
+        Log.v(TAG, "The closest course is: " + bestCourses.get(0));
+        Log.v(TAG, "The second closest course is: " + bestCourses.get(1));
+
         return bestCourses;
-    }
+        }
 
     /**
      * Calculates distances to placements and updates the UI
@@ -614,8 +645,23 @@ public class HoleActivity extends WearableActivity implements
             backView.setText(back);
 
             // Keep the hole number display current
-            holeView.setText("Hole " + currentHole.holeNum);
+            String holeViewText = ("Hole " + currentHole.holeNum);
+            holeView.setText(holeViewText);
+
         }
+        progressView.setVisibility(View.GONE);
+    }
+
+    private void updateGpsView(boolean startupState) {
+
+        if (startupState) {
+            progressView.setVisibility(View.VISIBLE);
+            holeView.setText("GPS");
+            backView.setText("SYNC");
+            middleView.setText("");
+            frontView.setText("");
+        }
+        else progressView.setVisibility(View.GONE);
     }
 }
 

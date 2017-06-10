@@ -77,6 +77,11 @@ public class DataModel {
 			ja = jp.getJSONFromFile(ctx, "SantaClara-json.txt", "golfCourses", "golfCourse");
 			coursesArray = jp.getCoursesFromJSON(ja, "Santa Clara");
 			allCoursesArray.addAll(coursesArray);
+
+			// Read Plumas courses info from file
+			ja = jp.getJSONFromFile(ctx, "Plumas-json.txt", "golfCourses", "golfCourse");
+			coursesArray = jp.getCoursesFromJSON(ja, "Plumas");
+			allCoursesArray.addAll(coursesArray);
 		}
 	    
 		// Method to retrieve courses
