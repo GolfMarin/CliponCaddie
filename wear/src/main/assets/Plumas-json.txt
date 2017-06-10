@@ -43,7 +43,7 @@
 			  [
 			    {
 			    "latitude": "39.796692",
-			    "longitude": "-122.658013"
+			    "longitude": "-120.653718"
 			    },
 			    {
 			    "latitude": "39.796667",
@@ -258,7 +258,7 @@
 			"placement":
 			  [
 			    {
-			    "latitude": "39.785056,",
+			    "latitude": "39.785056",
 			    "longitude": "-120.646302"
 			    },
 			    {
