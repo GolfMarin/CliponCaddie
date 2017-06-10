@@ -433,7 +433,334 @@
 	    "isPublic": true,
 	    "slope": "",
 	    "thumbnailURL": "",
-	    "woeid": "2456984"
+	    "woeid": "2456984",
+        "caddy":
+            [
+            {
+            "hole": "1",
+            "placement":
+              [
+                {
+                "latitude": "38.265039",
+                "longitude": "-122.273115"
+                },
+                {
+                "latitude": "38.264984",
+                "longitude": "-122.273089"
+                },
+                {
+                "latitude": "38.264924",
+                "longitude": "-122.273072"
+                }
+              ]
+            },
+            {
+            "hole": "2",
+            "placement":
+              [
+                {
+                "latitude": "38.264808",
+                "longitude": "-122.275626"
+                },
+                {
+                "latitude": "38.264815",
+                "longitude": "-122.275683"
+                },
+                {
+                "latitude": "38.264839",
+                "longitude": "-122.275745"
+                }
+              ]
+            },
+            {
+            "hole": "3",
+            "placement":
+              [
+                {
+                "latitude": "38.264836",
+                "longitude": "-122.279554"
+                },
+                {
+                "latitude": "38.266078",
+                "longitude": "-122.279549"
+                },
+                {
+                "latitude": "38.266113",
+                "longitude": "-122.279608"
+                }
+              ]
+            },
+            {
+            "hole": "4",
+            "placement":
+              [
+                {
+                "latitude": "38.263996",
+                "longitude": "-122.280140"
+                },
+                {
+                "latitude": "38.263950",
+                "longitude": "-122.280159"
+                },
+                {
+                "latitude": "38.263909",
+                "longitude": "-122.280190"
+                }
+              ]
+            },
+            {
+            "hole": "5",
+            "placement":
+              [
+                {
+                "latitude": "38.268591",
+                "longitude": "-122.280421"
+                },
+                {
+                "latitude": "38.268638",
+                "longitude": "-122.280426"
+                },
+                {
+                "latitude": "38.268691",
+                "longitude": "-122.280428"
+                }
+              ]
+            },
+            {
+            "hole": "6",
+            "placement":
+              [
+                {
+                "latitude": "38.266255",
+                "longitude": "-122.278453"
+                },
+                {
+                "latitude": "38.266197",
+                "longitude": "-122.278413"
+                },
+                {
+                "latitude": "38.266152",
+                "longitude": "-122.278391"
+                }
+              ]
+            },
+            {
+            "hole": "7",
+            "placement":
+              [
+                {
+                "latitude": "38.265239",
+                "longitude": "-122.276597"
+                },
+                {
+                "latitude": "38.265207",
+                "longitude": "-122.276551"
+                },
+                {
+                "latitude": "38.265179",
+                "longitude": "-122.276487"
+                }
+              ]
+            },
+            {
+            "hole": "8",
+            "placement":
+              [
+                {
+                "latitude": "38.268439",
+                "longitude": "-122.279369"
+                },
+                {
+                "latitude": "38.268487",
+                "longitude": "-122.279378"
+                },
+                {
+                "latitude": "38.268533",
+                "longitude": "-122.279379"
+                }
+              ]
+            },
+            {
+            "hole": "9",
+            "placement":
+              [
+                {
+                "latitude": "38.266498",
+                "longitude": "-122.276652"
+                },
+                {
+                "latitude": "38.266459",
+                "longitude": "-122.276608"
+                },
+                {
+                "latitude": "38.266407",
+                "longitude": "-122.276596"
+                }
+              ]
+            },
+            {
+            "hole": "10",
+            "placement":
+              [
+                {
+                "latitude": "38.267851",
+                "longitude": "-122.272619"
+                },
+                {
+                "latitude": "38.267844",
+                "longitude": "-122.272551"
+                },
+                {
+                "latitude": "38.267848",
+                "longitude": "-122.272468"
+                }
+              ]
+            },
+            {
+            "hole": "11",
+            "placement":
+              [
+                {
+                "latitude": "38.264386",
+                "longitude": "-122.271773"
+                },
+                {
+                "latitude": "38.264331",
+                "longitude": "-122.271733"
+                },
+                {
+                "latitude": "38.264280",
+                "longitude": "-122.271689"
+                }
+              ]
+            },
+            {
+            "hole": "12",
+            "placement":
+              [
+                {
+                "latitude": "38.263665",
+                "longitude": "-122.275615"
+                },
+                {
+                "latitude": "338.263685",
+                "longitude": "-122.275676"
+                },
+                {
+                "latitude": "38.263727",
+                "longitude": "-122.275726"
+                }
+              ]
+            },
+            {
+            "hole": "13",
+            "placement":
+              [
+                {
+                "latitude": "38.264114",
+                "longitude": "-122.278065"
+                },
+                {
+                "latitude": "38.264172",
+                "longitude": "-122.278099"
+                },
+                {
+                "latitude": "38.264226",
+                "longitude": "-122.278108"
+                }
+              ]
+            },
+            {
+            "hole": "14",
+            "placement":
+              [
+                {
+                "latitude": "38.261005",
+                "longitude": "-122.280306"
+                },
+                {
+                "latitude": "38.261001",
+                "longitude": "-122.280371"
+                },
+                {
+                "latitude": "38.261011",
+                "longitude": "-122.280437"
+                }
+              ]
+            },
+            {
+            "hole": "15",
+            "placement":
+              [
+                {
+                "latitude": "38.264789",
+                "longitude": "-122.278942"
+                },
+                {
+                "latitude": "38.264846",
+                "longitude": "-122.278932"
+                },
+                {
+                "latitude": "38.264893",
+                "longitude": "-122.278939"
+                }
+              ]
+            },
+            {
+            "hole": "16",
+            "placement":
+              [
+                {
+                "latitude": "38.264414",
+                "longitude": "-122.276903"
+                },
+                {
+                "latitude": "38.264363",
+                "longitude": "-122.276860"
+                },
+                {
+                "latitude": "38.264312",
+                "longitude": "-122.276817"
+                }
+              ]
+            },
+            {
+            "hole": "17",
+            "placement":
+              [
+                {
+                "latitude": "38.264077",
+                "longitude": "-122.272336"
+                },
+                {
+                "latitude": "38.264085",
+                "longitude": "-122.272263"
+                },
+                {
+                "latitude": "38.264095",
+                "longitude": "-122.272210"
+                }
+              ]
+            },
+            {
+            "hole": "18",
+            "placement":
+              [
+                {
+                "latitude": "38.267538",
+                "longitude": "-122.275845"
+                },
+                {
+                "latitude": "38.267551",
+                "longitude": "-122.275901"
+                },
+                {
+                "latitude": "38.267572",
+                "longitude": "-122.275955"
+                }
+              ]
+            }
+            ]
         },
         {
 	    "address": "3385 Hagen Road",
