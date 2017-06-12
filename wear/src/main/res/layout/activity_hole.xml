@@ -1,26 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-  <android.support.wearable.view.WatchViewStub
+<android.support.wearable.view.BoxInsetLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/watch_view_stub"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:rectLayout="@layout/rect_activity_hole"
-    app:roundLayout="@layout/round_activity_hole"
-    tools:context=".HoleActivity"
+    tools:context="com.golfmarin.cliponcaddie.HoleActivity"
     tools:deviceIds="wear">
-  </android.support.wearable.view.WatchViewStub>
 
-   <android.support.wearable.view.DismissOverlayView
-        android:id="@+id/dismiss_overlay"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".HoleActivity"
+        tools:deviceIds="wear_square"
+        android:background="@drawable/greenback_sq"
+        android:weightSum="1">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:indeterminate="true"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/hole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
 
-</FrameLayout>
+            android:text="@string/hole"
+            android:textSize="32dp"
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/back"
+            android:textSize="32dp"
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/middle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/middle"
+            android:textSize="32dp"
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/front"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/front"
+            android:textSize="32dp"
+            android:gravity="center_horizontal"
+            android:textColor="#ffffffff"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    </android.support.wearable.view.BoxInsetLayout>

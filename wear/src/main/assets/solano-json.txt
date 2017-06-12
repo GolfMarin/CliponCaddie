@@ -10,8 +10,8 @@
             "name": "Blue Rock Springs East Golf Course",
             "id": "6001",
             "info": "",
-            "latitude": "38.119882",
-            "longitude": "-122.194708",
+            "latitude": "38.123712",
+            "longitude": "-122.191291",
         "phone": "(707) 643-8476",
         "isPublic": true,
         "slope": "",
@@ -24,16 +24,16 @@
             "placement":
               [
                 {
-                "latitude": "38.119882",
-                "longitude": "-122.194708"
+                "latitude": "38.124210",
+                "longitude": "-122.188073"
                 },
                 {
-                "latitude": "38.119818",
-                "longitude": "-122.194708"
+                "latitude": "38.124281",
+                "longitude": "-122.188024"
                 },
                 {
-                "latitude": "38.119765",
-                "longitude": "-122.194726"
+                "latitude": "38.124292",
+                "longitude": "-122.187931"
                 }
               ]
             },
@@ -42,16 +42,16 @@
             "placement":
               [
                 {
-                "latitude": "38.117072",
-                "longitude": "-122.194342"
+                "latitude": "38.124175",
+                "longitude": "-122.187232"
                 },
                 {
-                "latitude": "38.117011",
-                "longitude": "-122.194317"
+                "latitude": "38.124124",
+                "longitude": "-122.187244"
                 },
                 {
-                "latitude": "38.116945",
-                "longitude": "-122.194291"
+                "latitude": "38.124071",
+                "longitude": "-122.187269"
                 }
               ]
             },
@@ -60,16 +60,16 @@
             "placement":
               [
                 {
-                "latitude": "38.117901",
-                "longitude": "-122.195439"
+                "latitude": "38.123277",
+                "longitude": "-122.191107"
                 },
                 {
-                "latitude": "38.117954",
-                "longitude": "-122.19547"
+                "latitude": "38.123263",
+                "longitude": "-122.191191"
                 },
                 {
-                "latitude": "38.11802",
-                "longitude": "-122.195544"
+                "latitude": "38.123250",
+                "longitude": "-122.191263"
                 }
               ]
             },
@@ -78,16 +78,16 @@
             "placement":
               [
                 {
-                "latitude": "38.12054",
-                "longitude": "-122.194926"
+                "latitude": "38.122553",
+                "longitude": "-122.188178"
                 },
                 {
-                "latitude": "38.120557",
-                "longitude": "-122.194851"
+                "latitude": "38.122596,",
+                "longitude": "-122.188115"
                 },
                 {
-                "latitude": "38.120581",
-                "longitude": "-122.194768"
+                "latitude": "38.122633",
+                "longitude": "-122.188064"
                 }
               ]
             },
@@ -96,16 +96,16 @@
             "placement":
               [
                 {
-                "latitude": "38.122062",
-                "longitude": "-122.197158"
+                "latitude": "38.118128",
+                "longitude": "-122.188557"
                 },
                 {
-                "latitude": "38.122017",
-                "longitude": "-122.197287"
+                "latitude": "38.118035",
+                "longitude": "-122.188580"
                 },
                 {
-                "latitude": "38.122109",
-                "longitude": "-122.197311"
+                "latitude": "38.117959",
+                "longitude": "-122.188550"
                 }
               ]
             },
@@ -114,16 +114,16 @@
             "placement":
               [
                 {
-                "latitude": "38.12508",
-                "longitude": "-122.192371"
+                "latitude": "38.116947",
+                "longitude": "-122.188428"
                 },
                 {
-                "latitude": "38.125125",
-                "longitude": "-122.19229"
+                "latitude": "38.116879",
+                "longitude": "-122.188420"
                 },
                 {
-                "latitude": "38.125178",
-                "longitude": "-122.192237"
+                "latitude": "38.116830",
+                "longitude": "-122.188419"
                 }
               ]
             },
@@ -132,16 +132,16 @@
             "placement":
               [
                 {
-                "latitude": "38.125873",
-                "longitude": "-122.19336"
+                "latitude": "38.115968",
+                "longitude": "-122.192729"
                 },
                 {
-                "latitude": "38.12581",
-                "longitude": "-122.193405"
+                "latitude": "38.115979",
+                "longitude": "-122.192810"
                 },
                 {
-                "latitude": "38.125746",
-                "longitude": "-122.193448"
+                "latitude": "38.116021",
+                "longitude": "-122.192869"
                 }
               ]
             },
@@ -150,16 +150,16 @@
             "placement":
               [
                 {
-                "latitude": "38.123378",
-                "longitude": "-122.197445"
+                "latitude": "38.116875",
+                "longitude": "-122.191836"
                 },
                 {
-                "latitude": "38.123341",
-                "longitude": "-122.197477"
+                "latitude": "38.116922",
+                "longitude": "-122.191888"
                 },
                 {
-                "latitude": "38.123315",
-                "longitude": "-122.197513"
+                "latitude": "38.116987",
+                "longitude": "-122.191923"
                 }
               ]
             },
@@ -168,16 +168,16 @@
             "placement":
               [
                 {
-                "latitude": "38.122763",
-                "longitude": "-122.19344"
+                "latitude": "38.119764",
+                "longitude": "-122.192084"
                 },
                 {
-                "latitude": "38.122737",
-                "longitude": "-122.193359"
+                "latitude": "38.119815",
+                "longitude": "-122.192144"
                 },
                 {
-                "latitude": "38.122701",
-                "longitude": "-122.193297"
+                "latitude": "38.119800",
+                "longitude": "-122.191982"
                 }
               ]
             },
@@ -186,16 +186,16 @@
             "placement":
               [
                 {
-                "latitude": "38.122941",
-                "longitude": "-122.196565"
+                "latitude": "38.119800",
+                "longitude": "-122.191982"
                 },
                 {
-                "latitude": "38.122891",
-                "longitude": "-122.196609"
+                "latitude": "38.117533",
+                "longitude": "-122.191697"
                 },
                 {
-                "latitude": "38.122839",
-                "longitude": "-122.196631"
+                "latitude": "38.117486",
+                "longitude": "-122.191731"
                 }
               ]
             },
@@ -204,16 +204,16 @@
             "placement":
               [
                 {
-                "latitude": "38.123245",
-                "longitude": "-122.198554"
+                "latitude": "38.116382",
+                "longitude": "-122.190697"
                 },
                 {
-                "latitude": "38.123198",
-                "longitude": "-122.198645"
+                "latitude": "38.116423",
+                "longitude": "-122.190730"
                 },
                 {
-                "latitude": "38.123175",
-                "longitude": "-122.198765"
+                "latitude": "38.116481",
+                "longitude": "-122.190720"
                 }
               ]
             },
@@ -222,16 +222,16 @@
             "placement":
               [
                 {
-                "latitude": "38.124983",
-                "longitude": "-122.202461"
+                "latitude": "38.119935",
+                "longitude": "-122.190649"
                 },
                 {
-                "latitude": "38.125021",
-                "longitude": "-122.202517"
+                "latitude": "38.119989",
+                "longitude": "-122.190565"
                 },
                 {
-                "latitude": "38.125071",
-                "longitude": "-122.202552"
+                "latitude": "38.119992",
+                "longitude": "-122.190464"
                 }
               ]
             },
@@ -240,16 +240,16 @@
             "placement":
               [
                 {
-                "latitude": "38.123029",
-                "longitude": "-122.200727"
+                "latitude": "38.117128",
+                "longitude": "-122.190470"
                 },
                 {
-                "latitude": "38.123021",
-                "longitude": "-122.200609"
+                "latitude": "38.117077",
+                "longitude": "-122.190441"
                 },
                 {
-                "latitude": "38.123031",
-                "longitude": "-122.200488"
+                "latitude": "38.117033,",
+                "longitude": "-122.190418"
                 }
               ]
             },
@@ -258,16 +258,16 @@
             "placement":
               [
                 {
-                "latitude": "38.120163",
-                "longitude": "-122.199471"
+                "latitude": "38.121713",
+                "longitude": "-122.188537"
                 },
                 {
-                "latitude": "38.120143",
-                "longitude": "-122.19954"
+                "latitude": "38.121777",
+                "longitude": "-122.188549"
                 },
                 {
-                "latitude": "38.120116",
-                "longitude": "-122.199607"
+                "latitude": "38.121838",
+                "longitude": "-122.188566"
                 }
               ]
             },
@@ -276,16 +276,16 @@
             "placement":
               [
                 {
-                "latitude": "38.120154",
-                "longitude": "-122.198386"
+                "latitude": "38.124389",
+                "longitude": "-122.185182"
                 },
                 {
-                "latitude": "38.120146",
-                "longitude": "-122.198258"
+                "latitude": "38.124451",
+                "longitude": "-122.185220"
                 },
                 {
-                "latitude": "38.120117",
-                "longitude": "-122.198163"
+                "latitude": "38.124506",
+                "longitude": "-122.185262"
                 }
               ]
             },
@@ -294,16 +294,16 @@
             "placement":
               [
                 {
-                "latitude": "38.122358",
-                "longitude": "-122.198638"
+                "latitude": "38.125352",
+                "longitude": "-122.186110"
                 },
                 {
-                "latitude": "38.122413",
-                "longitude": "-122.198752"
+                "latitude": "38.125384",
+                "longitude": "-122.186178"
                 },
                 {
-                "latitude": "38.122436",
-                "longitude": "-122.19886"
+                "latitude": "38.125421",
+                "longitude": "-122.186226"
                 }
               ]
             },
@@ -312,16 +312,16 @@
             "placement":
               [
                 {
-                "latitude": "38.119913",
-                "longitude": "-122.196761"
+                "latitude": "38.122954",
+                "longitude": "-122.187279"
                 },
                 {
-                "latitude": "38.11986",
-                "longitude": "-122.196856"
+                "latitude": "38.122888",
+                "longitude": "-122.187300"
                 },
                 {
-                "latitude": "38.119803",
-                "longitude": "-122.196737"
+                "latitude": "38.122814",
+                "longitude": "-122.187290"
                 }
               ]
             },
@@ -330,16 +330,16 @@
             "placement":
               [
                 {
-                "latitude": "38.121903",
-                "longitude": "-122.194174"
+                "latitude": "38.122725",
+                "longitude": "-122.191468"
                 },
                 {
-                "latitude": "38.121946",
-                "longitude": "-122.194088"
+                "latitude": "38.122755",
+                "longitude": "--122.191528"
                 },
                 {
-                "latitude": "38.121964",
-                "longitude": "-122.193962"
+                "latitude": "38.122800",
+                "longitude": "-122.191570"
                 }
               ]
             }
@@ -355,8 +355,8 @@
             "name": "Blue Rock Springs West Golf Course",
             "id": "6001",
             "info": "",
-            "latitude": "38.119882",
-            "longitude": "-122.194708",
+            "latitude": "38.122108",
+            "longitude": "-122.193143",
 	    "phone": "(707) 643-8476",
 	    "isPublic": true,
 	    "slope": "",
