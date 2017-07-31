@@ -583,24 +583,6 @@
 	    "woeid": "2487956"
         },
         {
-	    "address": "300 34th Avenue",
-            "city": "San Francisco, CA",
-	    "courseInfo": "",
-	    "directions": "",
-	    "holes": "18",
-	    "imageURL": "",	
-            "name": "Lincoln Park Golf Course",
-            "id": "3003",
-            "info": "",
-            "latitude": "37.7842171",
-            "longitude": "-122.494588",
-	    "phone": "(415) 664-4690",
-	    "isPublic": true,
-	    "slope": "",
-	    "thumbnailURL": "",
-	    "woeid": "2487956"
-        },
-        {
 	    "address": "599 Skyline Blvd.",
             "city": "Daly City, CA",
 	    "courseInfo": "",
