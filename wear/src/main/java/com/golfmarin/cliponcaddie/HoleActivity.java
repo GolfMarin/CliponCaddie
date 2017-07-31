@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;//
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -74,6 +75,7 @@ import java.util.Date;
 import java.util.Calendar;
 
 import static android.media.CamcorderProfile.get;
+import static java.lang.Integer.getInteger;
 import static java.lang.Integer.valueOf;
 
 /*
@@ -138,7 +140,7 @@ public class HoleActivity extends WearableActivity implements
     private Boolean startup = true;
     private BoxInsetLayout mContainerView;
 
-   private Integer onStoppedDay;
+    private int dayOfYearSaved = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,12 +186,14 @@ public class HoleActivity extends WearableActivity implements
             Integer dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
             Integer dayOfYearSaved = savedInstanceState.getInt("daysaved");
 
-            // If today, restore current member valuesstate
+            Log.v(TAG, "savedInstanceState is not null.");
+
+            // If today, restore current member values state
             if (dayOfYear.equals(dayOfYearSaved)) {
                 startup = savedInstanceState.getBoolean("startup");
                 currentCourse = savedInstanceState.getParcelable("currentcourse");
                 allHoles = savedInstanceState.getParcelableArrayList("allholes");
-                currentHole = savedInstanceState.getParcelable("currenthole");
+                currentHole = savedInstanceState.getParcelable("currentholeObject");
                 currentHoleNum = savedInstanceState.getInt("currentholenum");
                 nearbyCourse = savedInstanceState.getParcelable("nearbycourse");
 
@@ -200,20 +204,24 @@ public class HoleActivity extends WearableActivity implements
                 if (currentCourse != null) Log.v(TAG, "currentCourse: " + currentCourse.name);
                 if (allHoles != null) Log.v(TAG, "allHoles array is present");
                 if (currentHoleNum != null) Log.v(TAG, "currentHoleNum: " + currentHoleNum);
-                if (currentHole != null) Log.v(TAG, "currentHole Middle: " + currentHole.middle);
+                if (currentHole != null) Log.v(TAG, "currentHole hole number: " + currentHole.holeNum.toString());
                 if (nearbyCourse != null) Log.v(TAG, "nearbyCourse: " + nearbyCourse.name);
             }
 
         } else {
             // Otherwise, initialize members with default values for the new instance
             // Set startup state
+
+            Log.v(TAG, "Reset current course variables to defaults on creation/recreation of app");
+            Log.v(TAG, "Just FYI, the currentHoleNum before setting defaults is: + " + currentHoleNum);
+            Log.v(TAG, "Just FYI, the current startup state before setting defaults is: " + startup);
             startup = true;
+            updateGpsView(startup);
             currentCourse = null;
             allHoles = null;
             currentHole = null;
             currentHoleNum = 1;
             nearbyCourse = null;
-            Log.v(TAG, "Set startup to true and current course variables to null on creation/recreation of app");
         }
     }
 
@@ -245,13 +253,17 @@ public class HoleActivity extends WearableActivity implements
         if ((googleClient != null) && googleClient.isConnected()) {
             googleClient.disconnect();
         }
-        // Manage selection of the current golf course after a stop
-        Calendar calendar = Calendar.getInstance();
-        onStoppedDay = calendar.get(Calendar.DAY_OF_YEAR);
-        Log.v(TAG, "onStop executed on day: " + onStoppedDay);
-        startup = true;
         super.onStop();
     }
+
+        // Just a placeholder to learn about lifecycle
+
+        @Override
+        protected void onDestroy() {
+            Log.v(TAG, "OnDestroy was executed");
+            super.onDestroy();
+        }
+
 
    @Override
    protected void onRestart() {
@@ -260,11 +272,21 @@ public class HoleActivity extends WearableActivity implements
        Calendar calendar = Calendar.getInstance();
        Integer onRestartDay = calendar.get(Calendar.DAY_OF_YEAR);
        Log.v(TAG, "onRestart executed on day: " + onRestartDay);
-       Log.v(TAG, "onStop was executed on day: " + onStoppedDay);
 
-       // Force startup state to true
-       startup = true;
-       updateGpsView(startup);
+       // Get onSavedDay from shared preferences
+
+       SharedPreferences sharedpreferences;
+       sharedpreferences = this.getPreferences(Context.MODE_PRIVATE);
+       dayOfYearSaved = sharedpreferences.getInt("daysaved", 0);
+
+
+    //    Force startup state to true if not the same day (can be called during a round)
+       if (!(onRestartDay.equals(dayOfYearSaved))) {
+           Log.v(TAG, "onRestart set startup to true");
+           startup = true;
+           currentHoleNum = 1;
+           updateGpsView(startup);
+       }
     }
 
     @Override
@@ -279,39 +301,68 @@ public class HoleActivity extends WearableActivity implements
         // Register a local broadcast receiver, defined below.
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
-        // Force startup state to true
-        startup = true;
-        updateGpsView(startup);
+
+        // Get onSavedDay from shared preferences
+
+        SharedPreferences sharedpreferences;
+        sharedpreferences = this.getPreferences(Context.MODE_PRIVATE);
+        dayOfYearSaved = sharedpreferences.getInt("daysaved", 0);
+
+        Calendar calendar = Calendar.getInstance();
+        Integer onResumeDay = calendar.get(Calendar.DAY_OF_YEAR);
+        Log.v(TAG, "onResume executed on day: " + onResumeDay);
+        Log.v(TAG, "onResume could use dayOfYearSaved: " + dayOfYearSaved);
+
+        //    Force startup state to true if not the same day (can be called during a round)
+        /*
+        if (!(onResumeDay.equals(dayOfYearSaved))) {
+            Log.v(TAG, "onResume set startup to true");
+            startup = true;
+            updateGpsView(startup);
+        }
+        */
     }
 
-    /**
-     * Save the instance state.
+    /*
+     * Save the instance state override.
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+
+        // Save persistent activity state in shared preferences
+
+        Calendar calendar = Calendar.getInstance();
+        dayOfYearSaved = calendar.get(Calendar.DAY_OF_YEAR);
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("daysaved", dayOfYearSaved);
+        editor.commit();
+
+        Log.v(TAG, "Day of year saved to shared preferences: " + dayOfYearSaved);
+
         outState.putBoolean(KEY_IN_RESOLUTION, mIsInResolution);
 
         outState.putBoolean("startup",startup);
         outState.putParcelable("currentcourse",currentCourse);
         outState.putParcelableArrayList("allholes",allHoles);
         outState.putInt("currentholenum",currentHoleNum);
-        outState.putParcelable("currenthole",currentHole);
+        outState.putParcelable("currentholeObject",currentHole);
         outState.putParcelable("nearbycourse", nearbyCourse);
 
-        Calendar calendar = Calendar.getInstance();
-        int dayOfYearSaved = calendar.get(Calendar.DAY_OF_YEAR);
-        outState.putInt("daysaved",dayOfYearSaved);
+     //   Calendar calendar = Calendar.getInstance();
+     //   int dayOfYearSaved = calendar.get(Calendar.DAY_OF_YEAR);
+     //   outState.putInt("daysaved",dayOfYearSaved);
 
         Log.v(TAG, "Save instance state variables");
-        Log.v(TAG, "dayOfYearSaved: " + dayOfYearSaved);
+     //   Log.v(TAG, "dayOfYearSaved: " + dayOfYearSaved);
         if(startup != null) Log.v(TAG, "startup: " + startup);
-
         if (currentCourse != null) {Log.v(TAG, "currentCourse: " + currentCourse.name);}
         if (allHoles != null) Log.v(TAG, "allHoles array is present");
+        if (currentHole != null) Log.v(TAG, "currentHolObject: " + currentHole);
         if (currentHoleNum != null) Log.v(TAG, "currentHoleNum: " + currentHoleNum);
-        if (currentHole != null) Log.v(TAG, "currentHole Middle: " + currentHole.middle);
         if (nearbyCourse != null) Log.v(TAG, "nearbyCourse: " + nearbyCourse.name);
+        super.onSaveInstanceState(outState);
     }
 
     // ******************************
@@ -341,8 +392,8 @@ public class HoleActivity extends WearableActivity implements
         // Register listener using the LocationRequest object
         LocationServices.FusedLocationApi.requestLocationUpdates(googleClient, locationRequest, this);
 
-        // Get the last location and invoke the golf course setup procedure
-        onLocationChanged(LocationServices.FusedLocationApi.getLastLocation(googleClient));
+        // Get the last location and invoke the golf course setup procedure (likely stale, try not using)
+     //   onLocationChanged(LocationServices.FusedLocationApi.getLastLocation(googleClient));
 
         // Drop the progress view
         // progressView.setVisibility(View.GONE);
@@ -429,6 +480,7 @@ public class HoleActivity extends WearableActivity implements
                     allHoles = currentCourse.holeList;
                     currentHole = allHoles.get(currentHoleNum - 1);
                     startup = false;
+                    updateGpsView(startup);
                 }
             }
         }
@@ -570,7 +622,7 @@ public class HoleActivity extends WearableActivity implements
              // Update hole distances using current location
              super.onUpdateAmbient();
              Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
-             updateDisplay(currentLocation);
+             if (!startup) updateDisplay(currentLocation);
          }
 
     /*****************************
@@ -612,9 +664,8 @@ public class HoleActivity extends WearableActivity implements
                 }
             }
         }
-
-        Log.v(TAG, "The closest course is: " + bestCourses.get(0));
-        Log.v(TAG, "The second closest course is: " + bestCourses.get(1));
+        if (bestCourses.size() > 0)Log.v(TAG, "The closest course is: " + bestCourses.get(0));
+        if (bestCourses.size() > 1)   Log.v(TAG, "The second closest course is: " + bestCourses.get(1));
 
         return bestCourses;
         }
@@ -649,7 +700,7 @@ public class HoleActivity extends WearableActivity implements
             holeView.setText(holeViewText);
 
         }
-        progressView.setVisibility(View.GONE);
+    //    progressView.setVisibility(View.GONE);
     }
 
     private void updateGpsView(boolean startupState) {
