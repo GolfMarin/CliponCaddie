@@ -17,6 +17,7 @@ package com.golfmarin.cliponcaddie;
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
@@ -35,6 +36,8 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.wearable.activity.WearableActivity;
@@ -147,7 +150,7 @@ public class HoleActivity extends WearableActivity implements
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_hole);
-        setAmbientEnabled();
+     //   setAmbientEnabled();
         mContainerView = (BoxInsetLayout) findViewById(R.id.watch_view_stub);
 
 
@@ -159,9 +162,27 @@ public class HoleActivity extends WearableActivity implements
 
 
 
-        // Enable the ambient mode
-         setAmbientEnabled();
 
+
+        // Check and get location permissions
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HoleActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    1);
+        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WAKE_LOCK)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HoleActivity.this,
+                    new String[]{Manifest.permission.WAKE_LOCK},
+                    2);
+        }
+
+        // Enable the ambient mode
+        setAmbientEnabled();
 
         // Initialize data model containing all golf courses
         DataModel dm = new DataModel(this);
@@ -176,7 +197,7 @@ public class HoleActivity extends WearableActivity implements
         gestureDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
         // Turn off auto brightness
-        Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+     //   Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
 
         // Recreate previously destroyed global variables, if present
         // and not out of date
@@ -390,7 +411,12 @@ public class HoleActivity extends WearableActivity implements
         locationRequest.setSmallestDisplacement(2);
 
         // Register listener using the LocationRequest object
-        LocationServices.FusedLocationApi.requestLocationUpdates(googleClient, locationRequest, this);
+        // Verify permission first
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(googleClient, locationRequest, this);
+        }
 
         // Get the last location and invoke the golf course setup procedure (likely stale, try not using)
      //   onLocationChanged(LocationServices.FusedLocationApi.getLastLocation(googleClient));
@@ -553,7 +579,12 @@ public class HoleActivity extends WearableActivity implements
                         currentHole = allHoles.get(currentHoleNum - 1);
                     }
                 }
-                updateDisplay(LocationServices.FusedLocationApi.getLastLocation(googleClient));
+
+                if (ContextCompat.checkSelfPermission(getApplicationContext().getApplicationContext(),
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    updateDisplay(LocationServices.FusedLocationApi.getLastLocation(googleClient));
+                }
             }
             return true;
         }
@@ -621,8 +652,12 @@ public class HoleActivity extends WearableActivity implements
          public void onUpdateAmbient() {
              // Update hole distances using current location
              super.onUpdateAmbient();
-             Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
-             if (!startup) updateDisplay(currentLocation);
+             if (ContextCompat.checkSelfPermission(this,
+                     Manifest.permission.ACCESS_FINE_LOCATION)
+                     == PackageManager.PERMISSION_GRANTED) {
+                 Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleClient);
+                 if (!startup) updateDisplay(currentLocation);
+             }
          }
 
     /*****************************
