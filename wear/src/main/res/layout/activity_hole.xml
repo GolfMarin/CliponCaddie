@@ -16,7 +16,7 @@
         android:orientation="vertical"
         tools:context=".HoleActivity"
         tools:deviceIds="wear_square"
-        android:background="@drawable/greenback_sq"
+        android:background="@drawable/greenback_rnd"
         android:weightSum="1">
 
         <ProgressBar
