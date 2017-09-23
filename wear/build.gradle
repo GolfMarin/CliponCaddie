@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "com.golfmarin.cliponcaddie"
         minSdkVersion 22
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 2
         versionName "2"
     }
@@ -18,14 +18,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    allprojects {
+        repositories {
+            jcenter()
+            maven { url 'https://maven.google.com' }
+        }
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.support:wearable:2.0.1'
-    provided 'com.google.android.wearable:wearable:2.0.1'
-    compile 'com.google.android.gms:play-services-wearable:10.2.4'
-    compile 'com.google.android.gms:play-services-location:10.2.4'
-    compile 'com.google.android.gms:play-services-maps:10.2.4'
+    compile 'com.google.android.support:wearable:2.0.4'
+    provided 'com.google.android.wearable:wearable:2.0.4'
+    compile 'com.google.android.gms:play-services-wearable:11.0.4'
+    compile 'com.google.android.gms:play-services-location:11.0.4'
+    compile 'com.google.android.gms:play-services-maps:11.0.4'
 
 }

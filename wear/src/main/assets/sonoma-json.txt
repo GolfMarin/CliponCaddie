@@ -2510,16 +2510,16 @@
             "placement":
               [
                 {
-                "latitude": "38.529854",
-                "longitude": "-122.809155"
+                "latitude": "38.527181",
+                "longitude": "-122.809769"
                 },
                 {
-                "latitude": "38.529879",
-                "longitude": "-122.809264"
+                "latitude": "38.527104",
+                "longitude": "-122.809816"
                 },
                 {
-                "latitude": "38.529876",
-                "longitude": "-122.809373"
+                "latitude": "38.527035",
+                "longitude": "-122.809805"
                 }
               ]
             },
@@ -2528,16 +2528,16 @@
             "placement":
               [
                 {
-                "latitude": "38.529441",
-                "longitude": "-122.814226"
+                "latitude": "38.526489",
+                "longitude": "-122.807304"
                 },
                 {
-                "latitude": "38.529426",
-                "longitude": "-122.814361"
+                "latitude": "38.526437",
+                "longitude": "-122.807295"
                 },
                 {
-                "latitude": "38.529402",
-                "longitude": "-122.814465"
+                "latitude": "38.526399",
+                "longitude": "-122.807250"
                 }
               ]
             },
@@ -2546,16 +2546,16 @@
             "placement":
               [
                 {
-                "latitude": "38.021005",
-                "longitude": "-122.518579"
+                "latitude": "38.526149",
+                "longitude": "-122.810728"
                 },
                 {
-                "latitude": "38.020949",
-                "longitude": "-122.518481"
+                "latitude": "38.526109",
+                "longitude": "-122.810778"
                 },
                 {
-                "latitude": "38.020892",
-                "longitude": "-122.518407"
+                "latitude": "38.526109",
+                "longitude": "-122.810778"
                 }
               ]
             },
@@ -2564,16 +2564,16 @@
             "placement":
               [
                 {
-                "latitude": "38.022733",
-                "longitude": "-122.518492"
+                "latitude": "38.527675",
+                "longitude": "-122.810420"
                 },
                 {
-                "latitude": "38.022757",
-                "longitude": "-122.518399"
+                "latitude": "38.527762",
+                "longitude": "-122.810475"
                 },
                 {
-                "latitude": "38.022783",
-                "longitude": "-122.51831"
+                "latitude": "38.527830",
+                "longitude": "-122.810533"
                 }
               ]
             },
@@ -2582,16 +2582,16 @@
             "placement":
               [
                 {
-                "latitude": "38.023611",
-                "longitude": "-122.517729"
+                "latitude": "38.526059",
+                "longitude": "-122.811808"
                 },
                 {
-                "latitude": "38.023653",
-                "longitude": "-122.517632"
+                "latitude": "38.525986",
+                "longitude": "-122.811805"
                 },
                 {
-                "latitude": "38.023728",
-                "longitude": "-122.517583"
+                "latitude": "38.525907",
+                "longitude": "-122.811802"
                 }
               ]
             },
@@ -2600,16 +2600,16 @@
             "placement":
               [
                 {
-                "latitude": "38.022594",
-                "longitude": "-122.519803"
+                "latitude": "38.526102",
+                "longitude": "-122.815538"
                 },
                 {
-                "latitude": "38.022501",
-                "longitude": "-122.519886"
+                "latitude": "38.526086",
+                "longitude": "-122.815621"
                 },
                 {
-                "latitude": "38.022422",
-                "longitude": "-122.519889"
+                "latitude": "38.526083",
+                "longitude": "-122.815705"
                 }
               ]
             },
@@ -2618,16 +2618,16 @@
             "placement":
               [
                 {
-                "latitude": "38.021344",
-                "longitude": "-122.521021"
+                "latitude": "38.528819",
+                "longitude": "-122.814757"
                 },
                 {
-                "latitude": "38.021293",
-                "longitude": "-122.521113"
+                "latitude": "38.528834",
+                "longitude": "-122.814661"
                 },
                 {
-                "latitude": "38.021237",
-                "longitude": "-122.521175"
+                "latitude": "38.528851",
+                "longitude": "-122.814574"
                 }
               ]
             },
@@ -2636,16 +2636,16 @@
             "placement":
               [
                 {
-                "latitude": "38.022497",
-                "longitude": "-122.52041"
+                "latitude": "38.530018",
+                "longitude": "-122.809658"
                 },
                 {
-                "latitude": "38.022613",
-                "longitude": "-122.520398"
+                "latitude": "38.530001",
+                "longitude": "-122.809597"
                 },
                 {
-                "latitude": "38.022704",
-                "longitude": "-122.520359"
+                "latitude": "38.529953",
+                "longitude": "-122.809551"
                 }
               ]
             },
@@ -2654,16 +2654,16 @@
             "placement":
               [
                 {
-                "latitude": "38.021158",
-                "longitude": "-122.522219"
+                "latitude": "38.530302",
+                "longitude": "-122.806074"
                 },
                 {
-                "latitude": "38.0211",
-                "longitude": "-122.522317"
+                "latitude": "38.530290",
+                "longitude": "-122.805984"
                 },
                 {
-                "latitude": "38.021037",
-                "longitude": "-122.522402"
+                "latitude": "38.530245",
+                "longitude": "-122.805915"
                 }
 			  ]
 

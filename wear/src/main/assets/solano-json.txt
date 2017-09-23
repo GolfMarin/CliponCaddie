@@ -1911,8 +1911,8 @@
                    "placement":
                      [
                        {
-                       "latitude": "38.082088",
-                       "longitude": "-122.267186"
+                       "latitude": "38.299396",
+                       "longitude": "-122.028525"
                        },
                        {
                        "latitude": "38.299396",
