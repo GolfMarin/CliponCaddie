@@ -751,16 +751,16 @@
 			"placement":
 			  [
 			    {
-			    "latitude": "37.995688",
-			    "longitude": "-122.466679"
+			    "latitude": "37.995690",
+			    "longitude": "-122.466650"
 			    },
 			    {
-			    "latitude": "37.995701",
-			    "longitude": "-122.466594"
+			    "latitude": "37.995721",
+			    "longitude": "-122.466564"
 			    },
 			    {
-			    "latitude": "37.995758",
-			    "longitude": "-122.466542"
+			    "latitude": "37.995764",
+			    "longitude": "-122.466532"
 			    }
 			  ]
 			},

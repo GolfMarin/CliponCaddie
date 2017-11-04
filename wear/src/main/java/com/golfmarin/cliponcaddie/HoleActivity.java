@@ -41,9 +41,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.wearable.activity.WearableActivity;
-import android.support.wearable.view.BoxInsetLayout;
-import android.support.wearable.view.DismissOverlayView;
-import android.support.wearable.view.WatchViewStub;
+// import android.support.wearable.view.BoxInsetLayout;
+// import android.support.wearable.view.DismissOverlayView;
+// import android.support.wearable.view.WatchViewStub;
+import android.support.wear.widget.BoxInsetLayout;
+
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -67,7 +69,7 @@ import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
-import com.google.android.gms.wearable.Wearable;
+import com.google.android.gms.wearable.Wearable;;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -144,6 +146,11 @@ public class HoleActivity extends WearableActivity implements
     private BoxInsetLayout mContainerView;
 
     private int dayOfYearSaved = 0;
+
+    // Location update binary
+    private boolean requestLocationUpdates;
+    // Location request object;
+    private LocationRequest locationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -314,14 +321,28 @@ public class HoleActivity extends WearableActivity implements
     protected void onPause() {
         // Unregister listeners
         LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
-        super.onPause();
+        // super.onPause();
+
+        // Stop location updates
+        LocationServices.FusedLocationApi.removeLocationUpdates(googleClient, this);
+        requestLocationUpdates = false;
     }
 
     @Override
     protected void onResume() {
         // Register a local broadcast receiver, defined below.
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
+        // LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
+
+        if (googleClient.isConnected() && requestLocationUpdates) {
+            // Verify permission first
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                LocationServices.FusedLocationApi.requestLocationUpdates(googleClient, locationRequest, this);
+                requestLocationUpdates = true;
+            }
+        }
 
         // Get onSavedDay from shared preferences
 
@@ -400,7 +421,7 @@ public class HoleActivity extends WearableActivity implements
 
         // Register for location services
 
-        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest = LocationRequest.create();
         // Use high accuracy
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         // Set the update interval to 2 seconds
